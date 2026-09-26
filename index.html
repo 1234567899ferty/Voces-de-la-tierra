@@ -4,428 +4,619 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Libros FerX | Voces de la Tierra</title>
-<meta name="description" content="Libros FerX - Catálogo de libros publicados.">
-<meta name="author" content="Libros FerX">
+<meta name="description" content="Libros FerX - Voces de la Tierra, libro interactivo.">
 <style>
-:root{--crema:#FDEB9E;--menta:#7AE2CF;--turquesa:#077A7D;--azul:#06202B;--blanco:#fff;}
+:root{--crema:#FDEB9E;--menta:#7AE2CF;--turquesa:#077A7D;--azul:#06202B;--papel:#fbf3dd;--tinta:#2b1d0e;}
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--azul);color:var(--blanco);min-height:100vh;}
-header{width:100%;background:rgba(6,32,43,.95);border-bottom:1px solid rgba(122,226,207,.25);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
-.navbar{max-width:1200px;margin:auto;padding:18px 25px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--blanco);}
-.book-icon{width:42px;height:42px;flex-shrink:0;}
-.logo-text{display:flex;flex-direction:column;line-height:1;}
-.logo-title{font-size:1.35rem;font-weight:800;letter-spacing:1px;}
-.logo-subtitle{font-size:.7rem;color:var(--menta);margin-top:5px;letter-spacing:2px;}
-nav{display:flex;gap:20px;flex-wrap:wrap;}
-nav a{color:#dcebea;text-decoration:none;font-size:.9rem;transition:.25s;}
-nav a:hover{color:var(--menta);}
-.hero{max-width:1200px;min-height:650px;margin:auto;padding:70px 25px;display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:70px;}
-.tag{display:inline-block;background:var(--turquesa);color:var(--crema);padding:8px 15px;border-radius:30px;font-size:.8rem;font-weight:bold;letter-spacing:1px;margin-bottom:20px;}
-.hero h1{font-size:clamp(3rem,7vw,5.5rem);line-height:.95;margin-bottom:25px;}
-.hero h1 span{color:var(--menta);}
-.hero-description{color:#c8d9d8;max-width:580px;line-height:1.8;font-size:1.05rem;margin-bottom:30px;}
-.button{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:10px;background:var(--menta);color:var(--azul);text-decoration:none;font-weight:bold;transition:.25s;}
-.button:hover{background:var(--crema);transform:translateY(-3px);}
-.book-showcase{display:flex;justify-content:center;align-items:center;}
-.book-cover{width:min(390px,80vw);border-radius:8px;box-shadow:0 30px 70px rgba(0,0,0,.5);transform:rotateY(-4deg) rotateX(2deg);transition:.4s;}
-.book-cover:hover{transform:translateY(-8px);}
-.section{background:var(--crema);color:var(--azul);padding:90px 25px;}
-.section-inner{max-width:1100px;margin:auto;}
-.section-title{font-size:2.3rem;margin-bottom:12px;}
-.section-line{width:70px;height:5px;background:var(--turquesa);border-radius:10px;margin-bottom:40px;}
-.book-info{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;}
-.info-box{background:rgba(255,255,255,.45);border-radius:18px;padding:30px;}
-.info-box h3{color:var(--turquesa);margin-bottom:15px;font-size:1.25rem;}
-.info-box p{line-height:1.8;color:#183b43;}
-.details{display:grid;gap:15px;}
-.detail{display:flex;justify-content:space-between;gap:20px;padding-bottom:13px;border-bottom:1px solid rgba(6,32,43,.12);}
-.detail strong{color:var(--azul);}
-.detail span{color:var(--turquesa);text-align:right;}
-.catalog{background:var(--azul);padding:90px 25px;}
-.catalog-inner{max-width:1100px;margin:auto;}
-.catalog-header h2{font-size:2.3rem;}
-.catalog-header p{margin-top:10px;color:#a9c1c0;}
-.book-card{max-width:330px;background:#092b38;border:1px solid rgba(122,226,207,.15);border-radius:18px;overflow:hidden;transition:.3s;}
-.book-card:hover{transform:translateY(-7px);border-color:var(--menta);}
-.book-card img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;}
-.card-content{padding:22px;}
-.card-content h3{font-size:1.3rem;margin-bottom:8px;}
-.card-content p{color:#abc2c2;font-size:.9rem;line-height:1.6;margin-bottom:18px;}
-.card-button{display:inline-block;color:var(--menta);text-decoration:none;font-weight:bold;}
-.card-button:hover{color:var(--crema);}
-footer{background:#041923;padding:35px 25px;text-align:center;}
-footer h2{color:var(--menta);margin-bottom:8px;}
-footer p{color:#789291;font-size:.85rem;}
-
-/* ===== Secciones del libro (contenido) ===== */
-.book-section{background:var(--azul);padding:80px 20px;border-top:1px solid rgba(122,226,207,.12);}
-.book-section-inner{max-width:950px;margin:auto;}
-.book-section h2{font-size:2rem;color:var(--menta);margin-bottom:10px;}
-.book-section .subtitle{color:#a9c1c0;margin-bottom:30px;font-style:italic;}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:35px;}
-.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:1px solid rgba(122,226,207,.2);}
-.lang-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px;}
-.lang-tabs button{background:#092b38;color:#cfe4e3;border:1px solid rgba(122,226,207,.25);padding:9px 16px;border-radius:20px;cursor:pointer;font-size:.85rem;transition:.2s;}
-.lang-tabs button.active,.lang-tabs button:hover{background:var(--menta);color:var(--azul);font-weight:bold;}
-.lang-content{display:none;line-height:1.9;color:#dcebea;font-size:1rem;}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--azul);color:var(--tinta);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+.book-frame{width:min(900px,95vw);height:min(720px,85vh);background:var(--papel);border-radius:6px 16px 16px 6px;box-shadow:0 40px 80px rgba(0,0,0,.5),inset -6px 0 12px rgba(0,0,0,.08);position:relative;overflow:hidden;border:1px solid #e4d6ab;}
+.page{position:absolute;inset:0;padding:50px 55px;overflow-y:auto;display:none;}
+.page.active{display:block;animation:flip .4s ease;}
+@keyframes flip{from{opacity:0;transform:rotateY(6deg);}to{opacity:1;transform:rotateY(0);}}
+.page h2{font-size:1.9rem;color:var(--turquesa);margin-bottom:6px;}
+.page .subtitle{font-style:italic;color:#5a4a2f;margin-bottom:20px;font-size:.95rem;}
+.page p{line-height:1.85;margin-bottom:14px;font-size:1.02rem;}
+.page h4{color:var(--turquesa);margin:16px 0 8px;font-size:1.05rem;}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid #d9c48c;}
+.lang-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.lang-tabs button{background:var(--azul);color:#cfe4e3;border:none;padding:7px 13px;border-radius:16px;cursor:pointer;font-size:.76rem;font-family:Arial,sans-serif;}
+.lang-tabs button.active{background:var(--turquesa);color:#fff;font-weight:bold;}
+.lang-content{display:none;}
 .lang-content.active{display:block;}
-.lang-content p{margin-bottom:16px;}
-.lang-content h4{color:var(--crema);margin:18px 0 8px;font-size:1.05rem;}
-@media(max-width:800px){
-  .navbar{flex-direction:column;}
-  .hero{grid-template-columns:1fr;text-align:center;padding-top:55px;}
-  .hero-description{margin-left:auto;margin-right:auto;}
-  .book-showcase{order:-1;}
-  .book-info{grid-template-columns:1fr;}
+/* portada: SOLO visible cuando tiene .active (arregla el bug de fondo) */
+#page-cover{background:var(--azul);color:#fff;}
+#page-cover.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+#page-cover img{width:min(300px,60%);border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,.5);margin-bottom:22px;}
+#page-cover h1{font-size:2.4rem;color:var(--menta);margin-bottom:8px;}
+#page-cover p{color:#a9c1c0;font-family:Arial,sans-serif;margin-bottom:22px;}
+#page-cover button{font-family:Arial,sans-serif;background:var(--menta);color:var(--azul);border:none;padding:13px 26px;border-radius:8px;font-weight:bold;cursor:pointer;}
+/* indice */
+#page-toc ul{list-style:none;display:grid;gap:10px;}
+#page-toc li a{color:var(--turquesa);text-decoration:none;font-size:1.05rem;cursor:pointer;}
+#page-toc li a:hover{color:var(--azul);text-decoration:underline;}
+/* creditos */
+#page-creditos{text-align:center;}
+.logo-row{display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;margin-top:20px;}
+.logo-row img{height:90px;object-fit:contain;}
+.logo-row svg{height:70px;width:70px;}
+/* navegacion */
+.book-nav{display:flex;align-items:center;gap:18px;margin-top:16px;font-family:Arial,sans-serif;color:#a9c1c0;}
+.book-nav button{background:var(--menta);color:var(--azul);border:none;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;font-weight:bold;}
+.book-nav button:disabled{opacity:.3;cursor:default;}
+@media(max-width:700px){
+  .book-frame{height:88vh;}
+  .page{padding:30px 22px;}
   .gallery{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
 <body>
 
-<header>
-<div class="navbar">
-<a href="#inicio" class="logo">
-<svg class="book-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Libros">
-<path d="M8 12C8 9.8 9.8 8 12 8H28C32.4 8 36 11.6 36 16V54C34 51.5 30.8 50 27 50H12C9.8 50 8 48.2 8 46V12Z" stroke="#7AE2CF" stroke-width="4" stroke-linejoin="round"/>
-<path d="M56 12C56 9.8 54.2 8 52 8H36C31.6 8 28 11.6 28 16V54C30 51.5 33.2 50 37 50H52C54.2 50 56 48.2 56 46V12Z" stroke="#FDEB9E" stroke-width="4" stroke-linejoin="round"/>
-<path d="M16 18H24" stroke="#077A7D" stroke-width="3" stroke-linecap="round"/>
-<path d="M40 18H48" stroke="#077A7D" stroke-width="3" stroke-linecap="round"/>
-<path d="M16 26H24" stroke="#077A7D" stroke-width="3" stroke-linecap="round"/>
-<path d="M40 26H48" stroke="#077A7D" stroke-width="3" stroke-linecap="round"/>
-</svg>
-<div class="logo-text"><span class="logo-title">LIBROS FERX</span><span class="logo-subtitle">EDITORIAL</span></div>
-</a>
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#libro">Libro</a>
-<a href="#como-leer">Cómo leer</a>
-<a href="#maiz">El maíz</a>
-<a href="#tonantzin">Tonantzin</a>
-<a href="#tlaloc">Tláloc</a>
-<a href="#popocatepetl">Popocatépetl</a>
-<a href="#catalogo">Catálogo</a>
-</nav>
-</div>
-</header>
+<div class="book-frame">
 
-<main id="inicio">
-<section class="hero">
-<div class="hero-content">
-<span class="tag">LIBROS FERX</span>
-<h1>Voces<br><span>de la Tierra</span></h1>
-<p class="hero-description">Una colección de leyendas de las épocas indígenas de México, presentada en náhuatl, español, inglés y portugués.</p>
-<a href="#libro" class="button">Conocer el libro</a>
-</div>
-<div class="book-showcase">
-<img class="book-cover" src="https://1234567899ferty.github.io/imagenesferx/vocesdelatierra.jpeg" alt="Portada del libro Voces de la Tierra">
-</div>
-</section>
+  <!-- PORTADA -->
+  <div class="page active" id="page-cover">
+    <img src="https://1234567899ferty.github.io/imagenesferx/vocesdelatierra.jpeg" alt="Portada Voces de la Tierra">
+    <h1>Voces de la Tierra</h1>
+    <p>Leyendas indígenas de México en náhuatl, español, inglés, portugués y francés</p>
+    <button onclick="goTo(1)">Abrir libro →</button>
+  </div>
 
-<section class="section" id="libro">
-<div class="section-inner">
-<h2 class="section-title">Voces de la Tierra</h2>
-<div class="section-line"></div>
-<div class="book-info">
-<div class="info-box">
-<h3>Sobre el libro</h3>
-<p><strong>Voces de la Tierra</strong> reúne leyendas relacionadas con las épocas indígenas de México y presenta sus voces en diferentes idiomas.</p><br>
-<p>El proyecto busca acercar estas historias y tradiciones a nuevos lectores mediante una presentación accesible y cultural.</p>
-</div>
-<div class="info-box">
-<h3>Información</h3>
-<div class="details">
-<div class="detail"><strong>Título</strong><span>Voces de la Tierra</span></div>
-<div class="detail"><strong>Proyecto</strong><span>Libros FerX</span></div>
-<div class="detail"><strong>Idiomas</strong><span>Náhuatl · Español · Inglés · Portugués</span></div>
-<div class="detail"><strong>Categoría</strong><span>Leyendas y cultura</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
+  <!-- INDICE -->
+  <div class="page" id="page-toc">
+    <h2>Índice</h2>
+    <div class="subtitle">Voces de la Tierra</div>
+    <ul>
+      <li><a onclick="goTo(2)">Cómo leer este libro / Presentación</a></li>
+      <li><a onclick="goTo(3)">El origen del maíz</a></li>
+      <li><a onclick="goTo(4)">Tonantzin, madre de la tierra</a></li>
+      <li><a onclick="goTo(5)">Tláloc y las lluvias</a></li>
+      <li><a onclick="goTo(6)">Popocatépetl e Iztaccíhuatl</a></li>
+      <li><a onclick="goTo(7)">Los Cinco Soles</a></li>
+      <li><a onclick="goTo(8)">El viaje al Mictlán</a></li>
+      <li><a onclick="goTo(9)">Mictlantecuhtli y Mictecacíhuatl</a></li>
+      <li><a onclick="goTo(10)">El colibrí del guerrero</a></li>
+      <li><a onclick="goTo(11)">El nahual</a></li>
+      <li><a onclick="goTo(12)">Créditos</a></li>
+    </ul>
+  </div>
 
-<!-- ===== CÓMO LEER + PRESENTACIÓN ===== -->
-<section class="book-section" id="como-leer">
-<div class="book-section-inner">
-<h2>Cómo leer este libro</h2>
-<p class="subtitle">Presentación y guía de lectura</p>
-<div class="gallery">
-<img src="https://1234567899ferty.github.io/imagenesferx/perroindigenavdt.jpeg" alt="Ilustración indígena">
-<img src="https://1234567899ferty.github.io/imagenesferx/manogarravdt.jpeg" alt="Ilustración indígena">
-<img src="https://1234567899ferty.github.io/imagenesferx/jaguarlibrovdt.jpeg" alt="Ilustración indígena">
-<img src="https://1234567899ferty.github.io/imagenesferx/inaivdt.jpeg" alt="Ilustración indígena">
-</div>
-<div class="lang-tabs" id="tabs-intro">
-<button data-lang="nah" onclick="showLang('intro','nah')">Náhuatl</button>
-<button data-lang="es" class="active" onclick="showLang('intro','es')">Español</button>
-<button data-lang="en" onclick="showLang('intro','en')">English</button>
-<button data-lang="pt" onclick="showLang('intro','pt')">Português</button>
-</div>
-<div id="intro">
-<div class="lang-content" data-lang="nah">
-<h4>Quēmah ticmōmelāhuac inin amoxtli</h4>
-<p>Inin amoxtli mochīhua para huel ticmōmelāhuac ipan occeppa. Cē tlahtōlli quipiya nāhui tlahtōlli: nāhuatl, español, inglés auh português. Achto ticmōmelāhuac ipan nāhuatl, ca yehuatl in tlahtōlli huehueh. In occeppa tlahtōlli amo san quimocuepa in tlahtōlli, zan quimocuepa in yōllotl auh in tlatlacayotl. Amo monequi ticmōmelāhuac nochi ipan cē orden; cē tlahtōlli huel ticmōmelāhuac san iselti.</p>
-<h4>Voces de la Tierra – Presentación</h4>
-<p>Antes de los libros existía la palabra. Los pueblos originarios de México transmitieron su historia y su visión del mundo por medio de leyendas. Este libro reúne relatos reales de tradición nahua y los presenta en cuatro lenguas: náhuatl, español, inglés y portugués, con el fin de compartir la memoria ancestral y acercarla a lectores de todo el mundo.</p>
-</div>
-<div class="lang-content active" data-lang="es">
-<h4>Cómo leer este libro</h4>
-<p>Este libro puede leerse de distintas maneras. Cada leyenda se presenta primero en náhuatl y después en español, inglés y portugués. Las traducciones buscan respetar el sentido cultural de las historias, más que una traducción literal. Cada relato incluye una breve explicación para ayudar a comprender su contexto. Las leyendas pueden leerse de forma independiente y sin un orden específico. Este libro invita a una lectura tranquila y respetuosa.</p>
-<h4>Presentación</h4>
-<p>Antes de los libros existía la palabra. Los pueblos originarios de México transmitieron su historia y su visión del mundo por medio de leyendas. Este libro reúne relatos reales de tradición nahua y los presenta en cuatro lenguas: náhuatl, español, inglés y portugués, con el fin de compartir la memoria ancestral y acercarla a lectores de todo el mundo.</p>
-</div>
-<div class="lang-content" data-lang="en">
-<h4>How to Read This Book</h4>
-<p>This book can be read in different ways. Each legend is presented first in Nahuatl, followed by Spanish, English, and Portuguese. The translations aim to respect the cultural meaning of the stories rather than providing a word-for-word translation. Each legend includes a brief explanation to help understand its context. The legends may be read independently and in any order. This book invites a calm and respectful reading.</p>
-<h4>Presentation</h4>
-<p>Before books, there was the spoken word. The Indigenous peoples of Mexico passed on their history and worldview through legends. This book brings together authentic Nahua traditions and presents them in four languages — Nahuatl, Spanish, English, and Portuguese — to share ancestral memory with readers around the world.</p>
-</div>
-<div class="lang-content" data-lang="pt">
-<h4>Como ler este livro</h4>
-<p>Este livro pode ser lido de diferentes maneiras. Cada lenda é apresentada primeiro em náhuatl e depois em espanhol, inglês e português. As traduções buscam respeitar o sentido cultural das histórias, mais do que uma tradução literal. Cada relato inclui uma breve explicação para ajudar na compreensão do contexto. As lendas podem ser lidas de forma independente e sem uma ordem específica. Este livro convida a uma leitura tranquila e respeitosa.</p>
-<h4>Apresentação</h4>
-<p>Antes dos livros, existia a palavra. Os povos originários do México transmitiram sua história e visão de mundo por meio de lendas. Este livro reúne relatos reais da tradição nahua e os apresenta em quatro línguas — náhuatl, espanhol, inglês e português — para compartilhar a memória ancestral com leitores de diferentes culturas.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- COMO LEER + PRESENTACION -->
+  <div class="page" id="page-intro">
+    <h2>Cómo leer este libro</h2>
+    <div class="subtitle">Presentación</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/perroindigenavdt.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/manogarravdt.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/jaguarlibrovdt.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/inaivdt.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('intro-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('intro-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('intro-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('intro-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('intro-c','fr')">Français</button>
+    </div>
+    <div id="intro-c">
+      <div class="lang-content" data-lang="nah">
+        <h4>Quēmah ticmōmelāhuac inin amoxtli</h4>
+        <p>Inin amoxtli mochīhua para huel ticmōmelāhuac ipan occeppa. Cē tlahtōlli quipiya nāhui tlahtōlli: nāhuatl, español, inglés auh português. Achto ticmōmelāhuac ipan nāhuatl, ca yehuatl in tlahtōlli huehueh. In occeppa tlahtōlli amo san quimocuepa in tlahtōlli, zan quimocuepa in yōllotl auh in tlatlacayotl. Amo monequi ticmōmelāhuac nochi ipan cē orden; cē tlahtōlli huel ticmōmelāhuac san iselti.</p>
+        <h4>Voces de la Tierra – Presentación</h4>
+        <p>Antes de los libros existía la palabra. Los pueblos originarios de México transmitieron su historia y su visión del mundo por medio de leyendas. Este libro reúne relatos reales de tradición nahua y los presenta en cuatro lenguas: náhuatl, español, inglés y portugués, con el fin de compartir la memoria ancestral y acercarla a lectores de todo el mundo.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Este libro puede leerse de distintas maneras. Cada leyenda se presenta primero en náhuatl y después en español, inglés, portugués y francés. Las traducciones buscan respetar el sentido cultural de las historias, más que una traducción literal. Cada relato incluye una breve explicación para ayudar a comprender su contexto. Las leyendas pueden leerse de forma independiente y sin un orden específico. Este libro invita a una lectura tranquila y respetuosa.</p>
+        <h4>Presentación</h4>
+        <p>Antes de los libros existía la palabra. Los pueblos originarios de México transmitieron su historia y su visión del mundo por medio de leyendas. Este libro reúne relatos reales de tradición nahua y los presenta en varias lenguas, con el fin de compartir la memoria ancestral y acercarla a lectores de todo el mundo.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>This book can be read in different ways. Each legend is presented first in Nahuatl, followed by Spanish, English, Portuguese and French. The translations aim to respect the cultural meaning of the stories rather than providing a word-for-word translation. Each legend includes a brief explanation to help understand its context. The legends may be read independently and in any order. This book invites a calm and respectful reading.</p>
+        <h4>Presentation</h4>
+        <p>Before books, there was the spoken word. The Indigenous peoples of Mexico passed on their history and worldview through legends. This book brings together authentic Nahua traditions and presents them in several languages, to share ancestral memory with readers around the world.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Este livro pode ser lido de diferentes maneiras. Cada lenda é apresentada primeiro em náhuatl e depois em espanhol, inglês, português e francês. As traduções buscam respeitar o sentido cultural das histórias, mais do que uma tradução literal. Cada relato inclui uma breve explicação para ajudar na compreensão do contexto. As lendas podem ser lidas de forma independente e sem uma ordem específica. Este livro convida a uma leitura tranquila e respeitosa.</p>
+        <h4>Apresentação</h4>
+        <p>Antes dos livros, existia a palavra. Os povos originários do México transmitiram sua história e visão de mundo por meio de lendas. Este livro reúne relatos reais da tradição nahua e os apresenta em várias línguas, para compartilhar a memória ancestral com leitores de diferentes culturas.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Ce livre peut se lire de différentes manières. Chaque légende est présentée d'abord en náhuatl, puis en espagnol, en anglais, en portugais et en français. Les traductions cherchent à respecter le sens culturel des histoires plutôt qu'une traduction littérale. Chaque récit inclut une brève explication pour aider à comprendre son contexte. Les légendes peuvent être lues de façon indépendante et sans ordre précis. Ce livre invite à une lecture calme et respectueuse.</p>
+        <h4>Présentation</h4>
+        <p>Avant les livres, il y avait la parole. Les peuples originaires du Mexique ont transmis leur histoire et leur vision du monde à travers des légendes. Ce livre réunit des récits authentiques de la tradition nahua et les présente en plusieurs langues, afin de partager la mémoire ancestrale avec des lecteurs du monde entier.</p>
+      </div>
+    </div>
+  </div>
 
-<!-- ===== LEYENDA: EL ORIGEN DEL MAÍZ ===== -->
-<section class="book-section" id="maiz">
-<div class="book-section-inner">
-<h2>El origen del maíz</h2>
-<p class="subtitle">Leyendas de la Tierra y el Origen</p>
-<div class="gallery">
-<img src="https://1234567899ferty.github.io/imagenesferx/maiz1.jpeg" alt="El origen del maíz">
-<img src="https://1234567899ferty.github.io/imagenesferx/maiz2.jpeg" alt="El origen del maíz">
-<img src="https://1234567899ferty.github.io/imagenesferx/maiz3.jpeg" alt="El origen del maíz">
-<img src="https://1234567899ferty.github.io/imagenesferx/maiz4.jpeg" alt="El origen del maíz">
-</div>
-<div class="lang-tabs">
-<button data-lang="nah" onclick="showLang('maiz-c','nah')">Náhuatl</button>
-<button data-lang="es" class="active" onclick="showLang('maiz-c','es')">Español</button>
-<button data-lang="en" onclick="showLang('maiz-c','en')">English</button>
-<button data-lang="pt" onclick="showLang('maiz-c','pt')">Português</button>
-</div>
-<div id="maiz-c">
-<div class="lang-content" data-lang="nah">
-<p>Achtoh, quema amo catca in tlacameh, amo catca in ohtli, amo no ce tlahtolli México, in tlacameh nemiya ipan tlalli ic cualli amo. Tlacua in cuetlaxochitl, in tlapalli tlapacholli, ihuan in tlen tlalli quimaca. Amo quimatiya in centli; ihuan amo centli, amo chicahua in yolotl, amo cualli in tonalli.</p>
-<p>In teteoh quittaqueh desde ilhuicatl. Quittaqueh in tlacameh tlahuelmachiotl ihuan motlatlaniaqueh quen tiquinpalehuizqueh amo quipoloa in tlalticpac tlamantli. Quimatiyaqueh in centli mopiya ipan ce huey tepetl, itoca Tonacatépetl, in Tepetl in Tonacayotl. Zan amo huel quixitlaya in teteoh chicahuac.</p>
-<p>Ihcuac, Quetzalcóatl, ehecatl-teteo ihuan tlamatini, quimitta ce occe ohtli. Amo chicahualiztli; mopatla ce azcatl tliltic. Icnoc, yolcayotl, quitoquiliz in azcameh chichiltic, tlen quimatiyaqueh in centli.</p>
-<p>Miactonalli nemi ipan tlalli, quicahuilia in tlaltecoyotl, hasta quiahuitl ipan noyollo in tepetl. Ompa quitta in centli tlatzintli. Icnoc chicahua, quicui ce tlanextli centli ihuan quimaca in tlacameh.</p>
-<p>Ihcuac Quetzalcóatl mopatla occepa teteo, quimaca in centli in tlacameh. In teteoh quitlatzontequia in quiahuitl, in tletl, in tonatiuh. Iuhquin mochihua in tlacualiztli tlen quichihua yoliliztli, tlahcuilolli ihuan yolotl.</p>
-<p>Desde ihcuac, in centli amo zan tlacualiztli: tlalticpac itzintli, tlahtolli ihuan nemiliztli.</p>
-</div>
-<div class="lang-content active" data-lang="es">
-<p>Antes de que existieran los pueblos y los caminos, antes de que el nombre de México fuera pronunciado, los seres humanos caminaban sobre la tierra con hambre en el corazón. Comían raíces duras, animales pequeños y lo que la naturaleza dejaba al azar. No conocían el maíz, y sin él, su fuerza era débil y su espíritu se apagaba.</p>
-<p>Los dioses observaban desde lo alto. Veían a los hombres y mujeres sufrir, y se preguntaban cómo ayudarles sin romper el equilibrio del mundo. Sabían que el maíz existía, oculto en el interior de una gran montaña llamada Tonacatépetl, la Montaña del Sustento. Pero ningún dios poderoso había logrado abrirla.</p>
-<p>Fue entonces cuando Quetzalcóatl, el dios del viento y del conocimiento, decidió intentarlo de otra manera. En lugar de usar la fuerza, se transformó en una pequeña hormiga negra. Así, humilde y paciente, siguió el camino de las hormigas rojas, quienes ya conocían el secreto del maíz.</p>
-<p>Durante días caminó bajo la tierra, cruzó grietas y túneles hasta llegar al corazón de la montaña. Allí encontró el grano sagrado. Con gran esfuerzo, tomó un solo grano de maíz y lo llevó de regreso al mundo de los hombres.</p>
-<p>Cuando Quetzalcóatl volvió a su forma divina, entregó el maíz a la humanidad. Los dioses lo bendijeron con lluvia, fuego y sol. Así nació el alimento que daría vida a los pueblos, el grano que se convertiría en cuerpo, historia y espíritu.</p>
-<p>Desde entonces, el maíz no es solo comida: es origen, es memoria y es identidad.</p>
-</div>
-<div class="lang-content" data-lang="en">
-<p>Before peoples existed and before paths were traced upon the land, before the name of Mexico was ever spoken, human beings walked the earth with hunger in their hearts. They ate hard roots, small animals, and whatever nature left to chance. They did not know corn, and without it, their strength was weak and their spirit slowly faded.</p>
-<p>The gods watched from above. They saw men and women suffer and wondered how to help them without breaking the balance of the world. They knew that corn existed, hidden deep inside a great mountain called Tonacatépetl, the Mountain of Sustenance. Yet no powerful god had been able to open it.</p>
-<p>Then Quetzalcóatl, the god of wind and knowledge, chose a different path. Instead of using force, he transformed himself into a small black ant. Humble and patient, he followed the red ants, who already knew the secret of corn.</p>
-<p>For days he traveled beneath the earth, crossing cracks and tunnels until he reached the heart of the mountain. There he found the sacred grain. With great effort, he carried a single kernel of corn back to the world of humans.</p>
-<p>When Quetzalcóatl returned to his divine form, he gave the corn to humanity. The gods blessed it with rain, fire, and sunlight. Thus was born the food that would give life to entire civilizations, the grain that would become body, history, and spirit.</p>
-<p>Since that time, corn has not been just food: it is origin, memory, and identity.</p>
-</div>
-<div class="lang-content" data-lang="pt">
-<p>Antes que os povos existissem e antes que os caminhos fossem traçados sobre a terra, antes mesmo que o nome do México fosse pronunciado, os seres humanos caminhavam pelo mundo com fome no coração. Alimentavam-se de raízes duras, pequenos animais e do que a natureza deixava ao acaso. Não conheciam o milho e, sem ele, sua força era fraca e seu espírito se apagava lentamente.</p>
-<p>Os deuses observavam do alto. Viam homens e mulheres sofrerem e se perguntavam como ajudá-los sem quebrar o equilíbrio do mundo. Sabiam que o milho existia, escondido dentro de uma grande montanha chamada Tonacatépetl, a Montanha do Sustento. No entanto, nenhum deus poderoso havia conseguido abri-la.</p>
-<p>Então Quetzalcóatl, o deus do vento e do conhecimento, decidiu tentar de outra forma. Em vez de usar a força, transformou-se em uma pequena formiga negra. Humilde e paciente, seguiu as formigas vermelhas, que já conheciam o segredo do milho.</p>
-<p>Durante dias caminhou sob a terra, atravessou fendas e túneis até chegar ao coração da montanha. Ali encontrou o grão sagrado. Com grande esforço, levou um único grão de milho de volta ao mundo dos humanos.</p>
-<p>Quando Quetzalcóatl retornou à sua forma divina, entregou o milho à humanidade. Os deuses o abençoaram com chuva, fogo e luz do sol. Assim nasceu o alimento que daria vida aos povos, o grão que se tornaria corpo, história e espírito.</p>
-<p>Desde então, o milho não é apenas comida: é origem, memória e identidade.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- MAIZ -->
+  <div class="page" id="page-maiz">
+    <h2>El origen del maíz</h2>
+    <div class="subtitle">Leyendas de la Tierra y el Origen</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/maiz1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/maiz2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/maiz3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/maiz4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('maiz-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('maiz-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('maiz-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('maiz-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('maiz-c','fr')">Français</button>
+    </div>
+    <div id="maiz-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Achtoh, quema amo catca in tlacameh, amo catca in ohtli, amo no ce tlahtolli México, in tlacameh nemiya ipan tlalli ic cualli amo. Tlacua in cuetlaxochitl, in tlapalli tlapacholli, ihuan in tlen tlalli quimaca. Amo quimatiya in centli; ihuan amo centli, amo chicahua in yolotl, amo cualli in tonalli.</p>
+        <p>In teteoh quittaqueh desde ilhuicatl. Quittaqueh in tlacameh tlahuelmachiotl ihuan motlatlaniaqueh quen tiquinpalehuizqueh amo quipoloa in tlalticpac tlamantli. Quimatiyaqueh in centli mopiya ipan ce huey tepetl, itoca Tonacatépetl, in Tepetl in Tonacayotl. Zan amo huel quixitlaya in teteoh chicahuac.</p>
+        <p>Ihcuac, Quetzalcóatl, ehecatl-teteo ihuan tlamatini, quimitta ce occe ohtli. Amo chicahualiztli; mopatla ce azcatl tliltic. Icnoc, yolcayotl, quitoquiliz in azcameh chichiltic, tlen quimatiyaqueh in centli.</p>
+        <p>Miactonalli nemi ipan tlalli, quicahuilia in tlaltecoyotl, hasta quiahuitl ipan noyollo in tepetl. Ompa quitta in centli tlatzintli. Icnoc chicahua, quicui ce tlanextli centli ihuan quimaca in tlacameh.</p>
+        <p>Ihcuac Quetzalcóatl mopatla occepa teteo, quimaca in centli in tlacameh. In teteoh quitlatzontequia in quiahuitl, in tletl, in tonatiuh. Iuhquin mochihua in tlacualiztli tlen quichihua yoliliztli, tlahcuilolli ihuan yolotl.</p>
+        <p>Desde ihcuac, in centli amo zan tlacualiztli: tlalticpac itzintli, tlahtolli ihuan nemiliztli.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Antes de que existieran los pueblos y los caminos, antes de que el nombre de México fuera pronunciado, los seres humanos caminaban sobre la tierra con hambre en el corazón. Comían raíces duras, animales pequeños y lo que la naturaleza dejaba al azar. No conocían el maíz, y sin él, su fuerza era débil y su espíritu se apagaba.</p>
+        <p>Los dioses observaban desde lo alto. Veían a los hombres y mujeres sufrir, y se preguntaban cómo ayudarles sin romper el equilibrio del mundo. Sabían que el maíz existía, oculto en el interior de una gran montaña llamada Tonacatépetl, la Montaña del Sustento. Pero ningún dios poderoso había logrado abrirla.</p>
+        <p>Fue entonces cuando Quetzalcóatl, el dios del viento y del conocimiento, decidió intentarlo de otra manera. En lugar de usar la fuerza, se transformó en una pequeña hormiga negra. Así, humilde y paciente, siguió el camino de las hormigas rojas, quienes ya conocían el secreto del maíz.</p>
+        <p>Durante días caminó bajo la tierra, cruzó grietas y túneles hasta llegar al corazón de la montaña. Allí encontró el grano sagrado. Con gran esfuerzo, tomó un solo grano de maíz y lo llevó de regreso al mundo de los hombres.</p>
+        <p>Cuando Quetzalcóatl volvió a su forma divina, entregó el maíz a la humanidad. Los dioses lo bendijeron con lluvia, fuego y sol. Así nació el alimento que daría vida a los pueblos, el grano que se convertiría en cuerpo, historia y espíritu.</p>
+        <p>Desde entonces, el maíz no es solo comida: es origen, es memoria y es identidad.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>Before peoples existed and before paths were traced upon the land, before the name of Mexico was ever spoken, human beings walked the earth with hunger in their hearts. They ate hard roots, small animals, and whatever nature left to chance. They did not know corn, and without it, their strength was weak and their spirit slowly faded.</p>
+        <p>The gods watched from above. They saw men and women suffer and wondered how to help them without breaking the balance of the world. They knew that corn existed, hidden deep inside a great mountain called Tonacatépetl, the Mountain of Sustenance. Yet no powerful god had been able to open it.</p>
+        <p>Then Quetzalcóatl, the god of wind and knowledge, chose a different path. Instead of using force, he transformed himself into a small black ant. Humble and patient, he followed the red ants, who already knew the secret of corn.</p>
+        <p>For days he traveled beneath the earth, crossing cracks and tunnels until he reached the heart of the mountain. There he found the sacred grain. With great effort, he carried a single kernel of corn back to the world of humans.</p>
+        <p>When Quetzalcóatl returned to his divine form, he gave the corn to humanity. The gods blessed it with rain, fire, and sunlight. Thus was born the food that would give life to entire civilizations, the grain that would become body, history, and spirit.</p>
+        <p>Since that time, corn has not been just food: it is origin, memory, and identity.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Antes que os povos existissem e antes que os caminhos fossem traçados sobre a terra, antes mesmo que o nome do México fosse pronunciado, os seres humanos caminhavam pelo mundo com fome no coração. Alimentavam-se de raízes duras, pequenos animais e do que a natureza deixava ao acaso. Não conheciam o milho e, sem ele, sua força era fraca e seu espírito se apagava lentamente.</p>
+        <p>Os deuses observavam do alto. Viam homens e mulheres sofrerem e se perguntavam como ajudá-los sem quebrar o equilíbrio do mundo. Sabiam que o milho existia, escondido dentro de uma grande montanha chamada Tonacatépetl, a Montanha do Sustento. No entanto, nenhum deus poderoso havia conseguido abri-la.</p>
+        <p>Então Quetzalcóatl, o deus do vento e do conhecimento, decidiu tentar de outra forma. Em vez de usar a força, transformou-se em uma pequena formiga negra. Humilde e paciente, seguiu as formigas vermelhas, que já conheciam o segredo do milho.</p>
+        <p>Durante dias caminhou sob a terra, atravessou fendas e túneis até chegar ao coração da montanha. Ali encontrou o grão sagrado. Com grande esforço, levou um único grão de milho de volta ao mundo dos humanos.</p>
+        <p>Quando Quetzalcóatl retornou à sua forma divina, entregou o milho à humanidade. Os deuses o abençoaram com chuva, fogo e luz do sol. Assim nasceu o alimento que daria vida aos povos, o grão que se tornaria corpo, história e espírito.</p>
+        <p>Desde então, o milho não é apenas comida: é origem, memória e identidade.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Avant que les peuples n'existent et que les chemins ne soient tracés sur la terre, avant même que le nom du Mexique ne soit prononcé, les êtres humains marchaient sur la terre avec la faim au cœur. Ils mangeaient des racines dures, de petits animaux et ce que la nature laissait au hasard. Ils ne connaissaient pas le maïs, et sans lui, leur force était faible et leur esprit s'éteignait peu à peu.</p>
+        <p>Les dieux observaient d'en haut. Ils voyaient les hommes et les femmes souffrir et se demandaient comment les aider sans rompre l'équilibre du monde. Ils savaient que le maïs existait, caché au cœur d'une grande montagne appelée Tonacatépetl, la Montagne de la Subsistance. Mais aucun dieu puissant n'avait réussi à l'ouvrir.</p>
+        <p>Ce fut alors que Quetzalcóatl, le dieu du vent et du savoir, choisit une autre voie. Au lieu d'utiliser la force, il se transforma en une petite fourmi noire. Humble et patient, il suivit le chemin des fourmis rouges, qui connaissaient déjà le secret du maïs.</p>
+        <p>Pendant des jours, il marcha sous la terre, traversant des fissures et des tunnels jusqu'à atteindre le cœur de la montagne. Là, il trouva le grain sacré. Avec grand effort, il rapporta un seul grain de maïs vers le monde des hommes.</p>
+        <p>Quand Quetzalcóatl reprit sa forme divine, il offrit le maïs à l'humanité. Les dieux le bénirent avec la pluie, le feu et le soleil. Ainsi naquit l'aliment qui donnerait vie aux peuples, le grain qui deviendrait corps, histoire et esprit.</p>
+        <p>Depuis lors, le maïs n'est pas seulement de la nourriture : il est origine, mémoire et identité.</p>
+      </div>
+    </div>
+  </div>
 
-<!-- ===== LEYENDA: TONANTZIN ===== -->
-<section class="book-section" id="tonantzin">
-<div class="book-section-inner">
-<h2>Tonantzin, madre de la tierra</h2>
-<p class="subtitle">Leyendas de la Tierra y el Origen</p>
-<div class="gallery">
-<img src="https://1234567899ferty.github.io/imagenesferx/TONANTZIN1.jpeg" alt="Tonantzin">
-<img src="https://1234567899ferty.github.io/imagenesferx/Tonantzin2.jpeg" alt="Tonantzin">
-<img src="https://1234567899ferty.github.io/imagenesferx/TONANTZIN3.jpeg" alt="Tonantzin">
-<img src="https://1234567899ferty.github.io/imagenesferx/tonantzin4.jpeg" alt="Tonantzin">
-</div>
-<div class="lang-tabs">
-<button data-lang="nah" onclick="showLang('tonantzin-c','nah')">Náhuatl</button>
-<button data-lang="es" class="active" onclick="showLang('tonantzin-c','es')">Español</button>
-<button data-lang="en" onclick="showLang('tonantzin-c','en')">English</button>
-<button data-lang="pt" onclick="showLang('tonantzin-c','pt')">Português</button>
-</div>
-<div id="tonantzin-c">
-<div class="lang-content" data-lang="nah">
-<p>Tonantzin, "tonan tlatzintli", nemiya ipan tlalli ixtic. Amo nemiya in tlacameh ihuan, zan mochihua ipan nochi tepetl, ipan atl, ipan nochi tlanextli tlen tlalli quichihua.</p>
-<p>Yehuatl tlalli: cualli, yolcayotl, chicahuac. Ipan icxitl mochihua in xihuitl; ihuan ipan icxitl mocuepa in micqueh. Tonantzin quicaqui in cuicatl, in tlatlatolli, ihuan no in chocayotl.</p>
-<p>Ihcuac in tlacameh quicneliaqueh in tlalli, Tonantzin quimaca in tlanextli. Ihcuac quicahuaqueh in tlazohcayotl, tlalli moxoxotza ihuan in tlahuelmachiotl hualla. Amo tlatzacuiliztli, zan tlamachtiliztli.</p>
-<p>Quitta in tlacameh Tonantzin ceceppa quemeh cihuatl huehuehca ihuan xochitl, occeppa quemeh cihuatl chicahuac nemi xolotl ipan centli. Quinilhuia: amo ticpia tlalli, ticpalehuia.</p>
-<p>Iuhquin, nochi pixqui pehua ica tlapalehuiliztli, ihuan nochi tlalchiuhqui ica tlaxtlahuilli. Tonantzin amo quinequi teocalmeh oro, zan tlazohcayotl ihuan tlatzintli tlahtolli.</p>
-</div>
-<div class="lang-content active" data-lang="es">
-<p>Tonantzin, "nuestra venerable madre", habitaba en lo profundo de la tierra. No caminaba entre los hombres, pero su presencia se sentía en cada montaña, en cada río y en cada semilla que germinaba.</p>
-<p>Ella era la tierra misma: fértil, paciente y poderosa. De su cuerpo nacían las plantas, y a su vientre regresaban los muertos. Tonantzin escuchaba los cantos, los rezos y también el llanto de los pueblos.</p>
-<p>Cuando los humanos respetaban la tierra, ella les daba abundancia. Cuando olvidaban agradecer, la tierra se secaba y el hambre llegaba como advertencia. No era castigo, sino enseñanza.</p>
-<p>Se decía que Tonantzin aparecía a veces como una mujer anciana vestida de flores, otras como una joven fuerte que caminaba descalza sobre el maíz. A quienes la veían, les recordaba que la tierra no se posee: se cuida.</p>
-<p>Por eso, cada cosecha comenzaba con una ofrenda, cada siembra con una palabra de gratitud. Tonantzin no pedía templos de oro, solo respeto y memoria.</p>
-</div>
-<div class="lang-content" data-lang="en">
-<p>Tonantzin, "our revered mother," lived deep within the earth. She did not walk among humans, but her presence was felt in every mountain, every river, and every seed that sprouted from the soil.</p>
-<p>She was the earth itself: fertile, patient, and powerful. From her body plants were born, and to her womb the dead returned. Tonantzin listened to songs, prayers, and also to the cries of the people.</p>
-<p>When humans respected the land, she gave them abundance. When they forgot to give thanks, the earth grew dry and hunger arrived as a warning. It was not punishment, but teaching.</p>
-<p>It was said that Tonantzin sometimes appeared as an elderly woman dressed in flowers, and other times as a strong young woman walking barefoot through the cornfields. To those who saw her, she reminded them that the land is not owned — it is cared for.</p>
-<p>That is why every harvest began with an offering, and every planting with words of gratitude. Tonantzin did not ask for temples of gold, only respect and remembrance.</p>
-</div>
-<div class="lang-content" data-lang="pt">
-<p>Tonantzin, "nossa venerável mãe", habitava nas profundezas da terra. Ela não caminhava entre os humanos, mas sua presença era sentida em cada montanha, em cada rio e em cada semente que brotava do solo.</p>
-<p>Ela era a própria terra: fértil, paciente e poderosa. De seu corpo nasciam as plantas, e ao seu ventre retornavam os mortos. Tonantzin ouvia os cantos, as preces e também o choro dos povos.</p>
-<p>Quando os humanos respeitavam a terra, ela lhes dava abundância. Quando esqueciam de agradecer, a terra secava e a fome chegava como um aviso. Não era castigo, mas ensinamento.</p>
-<p>Dizia-se que Tonantzin às vezes aparecia como uma mulher idosa vestida de flores, e outras vezes como uma jovem forte caminhando descalça entre os milharais. Àqueles que a viam, ela lembrava que a terra não é possuída: ela é cuidada.</p>
-<p>Por isso, toda colheita começava com uma oferenda, e todo plantio com palavras de gratidão. Tonantzin não pedia templos de ouro, apenas respeito e memória.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- TONANTZIN -->
+  <div class="page" id="page-tonantzin">
+    <h2>Tonantzin, madre de la tierra</h2>
+    <div class="subtitle">Leyendas de la Tierra y el Origen</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/TONANTZIN1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Tonantzin2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/TONANTZIN3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/tonantzin4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('tonantzin-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('tonantzin-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('tonantzin-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('tonantzin-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('tonantzin-c','fr')">Français</button>
+    </div>
+    <div id="tonantzin-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Tonantzin, "tonan tlatzintli", nemiya ipan tlalli ixtic. Amo nemiya in tlacameh ihuan, zan mochihua ipan nochi tepetl, ipan atl, ipan nochi tlanextli tlen tlalli quichihua.</p>
+        <p>Yehuatl tlalli: cualli, yolcayotl, chicahuac. Ipan icxitl mochihua in xihuitl; ihuan ipan icxitl mocuepa in micqueh. Tonantzin quicaqui in cuicatl, in tlatlatolli, ihuan no in chocayotl.</p>
+        <p>Ihcuac in tlacameh quicneliaqueh in tlalli, Tonantzin quimaca in tlanextli. Ihcuac quicahuaqueh in tlazohcayotl, tlalli moxoxotza ihuan in tlahuelmachiotl hualla. Amo tlatzacuiliztli, zan tlamachtiliztli.</p>
+        <p>Quitta in tlacameh Tonantzin ceceppa quemeh cihuatl huehuehca ihuan xochitl, occeppa quemeh cihuatl chicahuac nemi xolotl ipan centli. Quinilhuia: amo ticpia tlalli, ticpalehuia.</p>
+        <p>Iuhquin, nochi pixqui pehua ica tlapalehuiliztli, ihuan nochi tlalchiuhqui ica tlaxtlahuilli. Tonantzin amo quinequi teocalmeh oro, zan tlazohcayotl ihuan tlatzintli tlahtolli.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Tonantzin, "nuestra venerable madre", habitaba en lo profundo de la tierra. No caminaba entre los hombres, pero su presencia se sentía en cada montaña, en cada río y en cada semilla que germinaba.</p>
+        <p>Ella era la tierra misma: fértil, paciente y poderosa. De su cuerpo nacían las plantas, y a su vientre regresaban los muertos. Tonantzin escuchaba los cantos, los rezos y también el llanto de los pueblos.</p>
+        <p>Cuando los humanos respetaban la tierra, ella les daba abundancia. Cuando olvidaban agradecer, la tierra se secaba y el hambre llegaba como advertencia. No era castigo, sino enseñanza.</p>
+        <p>Se decía que Tonantzin aparecía a veces como una mujer anciana vestida de flores, otras como una joven fuerte que caminaba descalza sobre el maíz. A quienes la veían, les recordaba que la tierra no se posee: se cuida.</p>
+        <p>Por eso, cada cosecha comenzaba con una ofrenda, cada siembra con una palabra de gratitud. Tonantzin no pedía templos de oro, solo respeto y memoria.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>Tonantzin, "our revered mother," lived deep within the earth. She did not walk among humans, but her presence was felt in every mountain, every river, and every seed that sprouted from the soil.</p>
+        <p>She was the earth itself: fertile, patient, and powerful. From her body plants were born, and to her womb the dead returned. Tonantzin listened to songs, prayers, and also to the cries of the people.</p>
+        <p>When humans respected the land, she gave them abundance. When they forgot to give thanks, the earth grew dry and hunger arrived as a warning. It was not punishment, but teaching.</p>
+        <p>It was said that Tonantzin sometimes appeared as an elderly woman dressed in flowers, and other times as a strong young woman walking barefoot through the cornfields. To those who saw her, she reminded them that the land is not owned — it is cared for.</p>
+        <p>That is why every harvest began with an offering, and every planting with words of gratitude. Tonantzin did not ask for temples of gold, only respect and remembrance.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Tonantzin, "nossa venerável mãe", habitava nas profundezas da terra. Ela não caminhava entre os humanos, mas sua presença era sentida em cada montanha, em cada rio e em cada semente que brotava do solo.</p>
+        <p>Ela era a própria terra: fértil, paciente e poderosa. De seu corpo nasciam as plantas, e ao seu ventre retornavam os mortos. Tonantzin ouvia os cantos, as preces e também o choro dos povos.</p>
+        <p>Quando os humanos respeitavam a terra, ela lhes dava abundância. Quando esqueciam de agradecer, a terra secava e a fome chegava como um aviso. Não era castigo, mas ensinamento.</p>
+        <p>Dizia-se que Tonantzin às vezes aparecia como uma mulher idosa vestida de flores, e outras vezes como uma jovem forte caminhando descalça entre os milharais. Àqueles que a viam, ela lembrava que a terra não é possuída: ela é cuidada.</p>
+        <p>Por isso, toda colheita começava com uma oferenda, e todo plantio com palavras de gratidão. Tonantzin não pedia templos de ouro, apenas respeito e memória.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Tonantzin, « notre vénérable mère », habitait au plus profond de la terre. Elle ne marchait pas parmi les hommes, mais sa présence se faisait sentir dans chaque montagne, chaque rivière et chaque graine qui germait.</p>
+        <p>Elle était la terre elle-même : fertile, patiente et puissante. De son corps naissaient les plantes, et dans son ventre revenaient les morts. Tonantzin écoutait les chants, les prières et aussi les pleurs des peuples.</p>
+        <p>Quand les humains respectaient la terre, elle leur donnait l'abondance. Quand ils oubliaient de la remercier, la terre se desséchait et la faim arrivait comme un avertissement. Ce n'était pas une punition, mais un enseignement.</p>
+        <p>On disait que Tonantzin apparaissait parfois comme une femme âgée vêtue de fleurs, d'autres fois comme une jeune femme forte marchant pieds nus parmi les champs de maïs. À ceux qui la voyaient, elle rappelait que la terre ne se possède pas : elle se prend soin.</p>
+        <p>C'est pourquoi chaque récolte commençait par une offrande, et chaque semis par des paroles de gratitude. Tonantzin ne demandait pas de temples d'or, seulement du respect et de la mémoire.</p>
+      </div>
+    </div>
+  </div>
 
-<!-- ===== LEYENDA: TLÁLOC ===== -->
-<section class="book-section" id="tlaloc">
-<div class="book-section-inner">
-<h2>Tláloc y las lluvias</h2>
-<p class="subtitle">Leyendas de la Tierra y el Origen</p>
-<div class="gallery">
-<img src="https://1234567899ferty.github.io/imagenesferx/Tl%C3%A1loc1.jpeg" alt="Tláloc">
-<img src="https://1234567899ferty.github.io/imagenesferx/Tlaloc2.jpeg" alt="Tláloc">
-<img src="https://1234567899ferty.github.io/imagenesferx/tlaloc3.jpeg" alt="Tláloc">
-<img src="https://1234567899ferty.github.io/imagenesferx/tlaloc4.jpeg" alt="Tláloc">
-</div>
-<div class="lang-tabs">
-<button data-lang="nah" onclick="showLang('tlaloc-c','nah')">Náhuatl</button>
-<button data-lang="es" class="active" onclick="showLang('tlaloc-c','es')">Español</button>
-<button data-lang="en" onclick="showLang('tlaloc-c','en')">English</button>
-<button data-lang="pt" onclick="showLang('tlaloc-c','pt')">Português</button>
-</div>
-<div id="tlaloc-c">
-<div class="lang-content" data-lang="nah">
-<p>Tláloc tlanahuatia ipan tepetl quiahuitl tlapacholli. Ixtli quemeh tlapetlanilli, tlahtolli quemeh tlatlatzintli. Yehuatl quimaca quiahuitl, atl, ameyalli; ihuan no quichihua in tlaquauhtli.</p>
-<p>Ipan itlanahuatil nemiya in tlaloqueh, piltzintin tlen quipiyaqueh in xicalmeh atl. Ce xical quimaca quiahuitl cualli tlen quipalehuia in milpa; occe quiahuitl chicahuac tlen quipaxaloa in tlalli; ihuan occe quiahuitl temictiani ihcuac amo tlatzintli in tlalticpac.</p>
-<p>Ihcuac in tlacameh quihonoriaqueh Tláloc, in quiahuitl hualla ipan tonalli cualli. Ihcuac quicahuaqueh in tlatlatolli ihuan quicocoa in tlalli, in xicalmeh motlapachoa ica chicahualiztli.</p>
-<p>Quimatiyaqueh in tlacameh tlen miqui ica atl —tlapetlanilli, atlcholoa— amo yahuia Mictlan, zan Tlalocan, tlalticpac xoxouhqui campa amo quipoloa tlacualiztli.</p>
-<p>Tláloc amo tlahuel, amo cualli: yehuatl yolcayotl.</p>
-</div>
-<div class="lang-content active" data-lang="es">
-<p>Tláloc gobernaba desde lo alto de las montañas cubiertas de nubes. Sus ojos eran como relámpagos y su voz retumbaba en los truenos. Él controlaba las lluvias, los ríos y los manantiales, pero también la sequía.</p>
-<p>En su reino vivían los tlaloques, pequeños seres que guardaban las jarras del agua. Cada jarra producía un tipo distinto de lluvia: la suave que alimenta la milpa, la fuerte que limpia la tierra, y la peligrosa que destruye si no se respeta a la naturaleza.</p>
-<p>Cuando los pueblos honraban a Tláloc, las lluvias llegaban a tiempo. Cuando olvidaban los rituales y dañaban la tierra, las jarras se rompían con furia.</p>
-<p>Se creía que quienes morían por causa del agua —rayos, inundaciones— no iban al Mictlán, sino al Tlalocan, un lugar verde y eterno donde nunca faltaba alimento.</p>
-<p>Tláloc no era cruel ni bondadoso: era equilibrio.</p>
-</div>
-<div class="lang-content" data-lang="en">
-<p>Tlaloc ruled from the high cloud-covered mountains. His eyes flashed like lightning, and his voice echoed in thunder. He controlled rain, rivers, and springs, but also drought.</p>
-<p>In his realm lived the Tlaloques, small beings who guarded jars of water. Each jar produced a different kind of rain: the gentle rain that nourishes the cornfields, the strong rain that cleanses the land, and the dangerous rain that destroys when nature is disrespected.</p>
-<p>When the people honored Tlaloc, the rains arrived on time. When rituals were forgotten and the land was harmed, the jars broke with fury.</p>
-<p>It was believed that those who died because of water — by lightning or floods — did not go to Mictlan, but to Tlalocan, a green and eternal place where food never ran out.</p>
-<p>Tlaloc was neither cruel nor kind: he was balance.</p>
-</div>
-<div class="lang-content" data-lang="pt">
-<p>Tlaloc governava do alto das montanhas cobertas de nuvens. Seus olhos eram como relâmpagos, e sua voz ressoava nos trovões. Ele controlava as chuvas, os rios e as fontes, mas também a seca.</p>
-<p>Em seu reino viviam os tlaloques, pequenos seres que guardavam jarros de água. Cada jarro produzia um tipo diferente de chuva: a chuva suave que alimenta os campos de milho, a chuva forte que limpa a terra e a chuva perigosa que destrói quando a natureza não é respeitada.</p>
-<p>Quando os povos honravam Tlaloc, as chuvas chegavam no tempo certo. Quando os rituais eram esquecidos e a terra era ferida, os jarros se quebravam com fúria.</p>
-<p>Acreditava-se que aqueles que morriam por causa da água — raios ou inundações — não iam para o Mictlán, mas para o Tlalocan, um lugar verde e eterno onde nunca faltava alimento.</p>
-<p>Tlaloc não era cruel nem bondoso: ele era equilíbrio.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- TLALOC -->
+  <div class="page" id="page-tlaloc">
+    <h2>Tláloc y las lluvias</h2>
+    <div class="subtitle">Leyendas de la Tierra y el Origen</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Tl%C3%A1loc1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Tlaloc2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/tlaloc3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/tlaloc4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('tlaloc-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('tlaloc-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('tlaloc-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('tlaloc-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('tlaloc-c','fr')">Français</button>
+    </div>
+    <div id="tlaloc-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Tláloc tlanahuatia ipan tepetl quiahuitl tlapacholli. Ixtli quemeh tlapetlanilli, tlahtolli quemeh tlatlatzintli. Yehuatl quimaca quiahuitl, atl, ameyalli; ihuan no quichihua in tlaquauhtli.</p>
+        <p>Ipan itlanahuatil nemiya in tlaloqueh, piltzintin tlen quipiyaqueh in xicalmeh atl. Ce xical quimaca quiahuitl cualli tlen quipalehuia in milpa; occe quiahuitl chicahuac tlen quipaxaloa in tlalli; ihuan occe quiahuitl temictiani ihcuac amo tlatzintli in tlalticpac.</p>
+        <p>Ihcuac in tlacameh quihonoriaqueh Tláloc, in quiahuitl hualla ipan tonalli cualli. Ihcuac quicahuaqueh in tlatlatolli ihuan quicocoa in tlalli, in xicalmeh motlapachoa ica chicahualiztli.</p>
+        <p>Quimatiyaqueh in tlacameh tlen miqui ica atl —tlapetlanilli, atlcholoa— amo yahuia Mictlan, zan Tlalocan, tlalticpac xoxouhqui campa amo quipoloa tlacualiztli.</p>
+        <p>Tláloc amo tlahuel, amo cualli: yehuatl yolcayotl.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Tláloc gobernaba desde lo alto de las montañas cubiertas de nubes. Sus ojos eran como relámpagos y su voz retumbaba en los truenos. Él controlaba las lluvias, los ríos y los manantiales, pero también la sequía.</p>
+        <p>En su reino vivían los tlaloques, pequeños seres que guardaban las jarras del agua. Cada jarra producía un tipo distinto de lluvia: la suave que alimenta la milpa, la fuerte que limpia la tierra, y la peligrosa que destruye si no se respeta a la naturaleza.</p>
+        <p>Cuando los pueblos honraban a Tláloc, las lluvias llegaban a tiempo. Cuando olvidaban los rituales y dañaban la tierra, las jarras se rompían con furia.</p>
+        <p>Se creía que quienes morían por causa del agua —rayos, inundaciones— no iban al Mictlán, sino al Tlalocan, un lugar verde y eterno donde nunca faltaba alimento.</p>
+        <p>Tláloc no era cruel ni bondadoso: era equilibrio.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>Tlaloc ruled from the high cloud-covered mountains. His eyes flashed like lightning, and his voice echoed in thunder. He controlled rain, rivers, and springs, but also drought.</p>
+        <p>In his realm lived the Tlaloques, small beings who guarded jars of water. Each jar produced a different kind of rain: the gentle rain that nourishes the cornfields, the strong rain that cleanses the land, and the dangerous rain that destroys when nature is disrespected.</p>
+        <p>When the people honored Tlaloc, the rains arrived on time. When rituals were forgotten and the land was harmed, the jars broke with fury.</p>
+        <p>It was believed that those who died because of water — by lightning or floods — did not go to Mictlan, but to Tlalocan, a green and eternal place where food never ran out.</p>
+        <p>Tlaloc was neither cruel nor kind: he was balance.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Tlaloc governava do alto das montanhas cobertas de nuvens. Seus olhos eram como relâmpagos, e sua voz ressoava nos trovões. Ele controlava as chuvas, os rios e as fontes, mas também a seca.</p>
+        <p>Em seu reino viviam os tlaloques, pequenos seres que guardavam jarros de água. Cada jarro produzia um tipo diferente de chuva: a chuva suave que alimenta os campos de milho, a chuva forte que limpa a terra e a chuva perigosa que destrói quando a natureza não é respeitada.</p>
+        <p>Quando os povos honravam Tlaloc, as chuvas chegavam no tempo certo. Quando os rituais eram esquecidos e a terra era ferida, os jarros se quebravam com fúria.</p>
+        <p>Acreditava-se que aqueles que morriam por causa da água — raios ou inundações — não iam para o Mictlán, mas para o Tlalocan, um lugar verde e eterno onde nunca faltava alimento.</p>
+        <p>Tlaloc não era cruel nem bondoso: ele era equilíbrio.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Tláloc régnait depuis les hautes montagnes couvertes de nuages. Ses yeux brillaient comme des éclairs, et sa voix résonnait dans le tonnerre. Il contrôlait la pluie, les rivières et les sources, mais aussi la sécheresse.</p>
+        <p>Dans son royaume vivaient les tlaloques, de petits êtres qui gardaient des jarres d'eau. Chaque jarre produisait un type de pluie différent : la pluie douce qui nourrit les champs de maïs, la pluie forte qui nettoie la terre, et la pluie dangereuse qui détruit quand la nature n'est pas respectée.</p>
+        <p>Quand les peuples honoraient Tláloc, les pluies arrivaient à temps. Quand les rituels étaient oubliés et que la terre était blessée, les jarres se brisaient avec fureur.</p>
+        <p>On croyait que ceux qui mouraient à cause de l'eau — foudre ou inondations — n'allaient pas au Mictlán, mais au Tlalocan, un lieu vert et éternel où la nourriture ne manquait jamais.</p>
+        <p>Tláloc n'était ni cruel ni bienveillant : il était l'équilibre.</p>
+      </div>
+    </div>
+  </div>
 
-<!-- ===== LEYENDA: POPOCATÉPETL E IZTACCÍHUATL ===== -->
-<section class="book-section" id="popocatepetl">
-<div class="book-section-inner">
-<h2>Popocatépetl e Iztaccíhuatl</h2>
-<p class="subtitle">Leyendas del Fuego y la Transformación</p>
-<div class="gallery">
-<img src="https://1234567899ferty.github.io/imagenesferx/Popocate1.jpeg" alt="Popocatépetl e Iztaccíhuatl">
-<img src="https://1234567899ferty.github.io/imagenesferx/Popocate2.jpeg" alt="Popocatépetl e Iztaccíhuatl">
-<img src="https://1234567899ferty.github.io/imagenesferx/Popocate3.jpeg" alt="Popocatépetl e Iztaccíhuatl">
-<img src="https://1234567899ferty.github.io/imagenesferx/popocate4.jpeg" alt="Popocatépetl e Iztaccíhuatl">
-</div>
-<div class="lang-tabs">
-<button data-lang="nah" onclick="showLang('popo-c','nah')">Náhuatl</button>
-<button data-lang="es" class="active" onclick="showLang('popo-c','es')">Español</button>
-<button data-lang="en" onclick="showLang('popo-c','en')">English</button>
-<button data-lang="pt" onclick="showLang('popo-c','pt')">Português</button>
-</div>
-<div id="popo-c">
-<div class="lang-content" data-lang="nah">
-<p>Achtoh, ihcuac in mexicah amo san tepetl quittayaqueh, zan quemeh yolmeh, nemiya ce telpuchtli tlen itoca Popocatépetl, tlacatl chicahuac ihuan yolchicahuac. Yehuatl quicnelia ce cihuapilli cualli ihuan yancuic yolotl, itoca Iztaccíhuatl, tlen cualli ixtli quemeh sitlalli.</p>
-<p>In omeh tlazohcamatiyah ica nochi inyollo. Popocatépetl quicuaquilia in cihuapilli: "Nimitztlazohtla, ihuan nimitzcuiz ihcuac nimocuepa ica chicahualiztli." Zan quipia ic yauh tlahuizcalpan, campa mochihua in yaoyotl.</p>
-<p>Pero in tlahtolli amo cualli hualla. Ce tlacatl amo cualli quinilhui Iztaccíhuatl ca Popocatépetl omic ipan yaoyotl. In cihuapilli, ihuan yolotl tlahuelcahua, moteca ipan tlalli ihuan amo occepa motlanextia.</p>
-<p>Ihcuac Popocatépetl mocuepa, amo quitta in tlazohcamatiyotl nemi. Quitta Iztaccíhuatl moteca quemeh temictli. Ihuan quicui ipan itzin, quimotlalilia ipan ce huey tepetl. Ompa nemi icniuh, quimitta in cihuapilli tlaxcalantli quemeh tepetl iztac.</p>
-<p>Popocatépetl quimocahua icniuh ihuan quimocuitlahuia ica tletl ihuan popoca. Desde ihcuac, Popocatépetl amo cahua tletl, ca quipiya in tlazohcamatiyotl ipan iyollo. Iztaccíhuatl, iztac tepetl, moteca quemeh cihuapilli cochitzin.</p>
-<p>In tepetl tlen tlacameh quittah axcan, zan amo tepetl: yehuan omeh yolmeh tlen tlazohcamatiyah.</p>
-</div>
-<div class="lang-content active" data-lang="es">
-<p>En los tiempos antiguos, cuando las montañas aún tenían corazón y memoria, vivía un joven guerrero llamado Popocatépetl, fuerte en el cuerpo y firme en el espíritu. Él amaba profundamente a Iztaccíhuatl, una princesa de belleza serena, tan blanca como la nieve que cubre las cumbres.</p>
-<p>Ambos se prometieron amor eterno. Popocatépetl juró regresar victorioso de la guerra para tomarla como esposa. Con ese juramento partió al combate, llevando en el corazón la imagen de su amada.</p>
-<p>Pero mientras él luchaba, un enemigo envidioso llevó una mentira al palacio: dijo que Popocatépetl había muerto. Al escuchar la noticia, Iztaccíhuatl cayó en una profunda tristeza. Su corazón no resistió el dolor y poco a poco se apagó, quedando inmóvil como en un sueño eterno.</p>
-<p>Cuando Popocatépetl regresó triunfante y encontró a su amada sin vida, el dolor fue tan grande que tomó su cuerpo y lo llevó hasta lo alto de las montañas. Allí la recostó con cuidado, como si aún pudiera despertar, y permaneció a su lado con una antorcha encendida, velándola sin descanso.</p>
-<p>Los dioses, conmovidos por aquel amor tan fiel, los transformaron en montañas. Iztaccíhuatl se convirtió en la montaña dormida, serena y blanca. Popocatépetl se convirtió en el volcán que aún humea, guardián eterno de su amada.</p>
-<p>Desde entonces, cuando el volcán lanza humo al cielo, se dice que Popocatépetl sigue velando el sueño de Iztaccíhuatl.</p>
-</div>
-<div class="lang-content" data-lang="en">
-<p>In ancient times, when mountains still had hearts and memory, there lived a young warrior named Popocatépetl, strong in body and firm in spirit. He deeply loved Iztaccíhuatl, a princess of calm beauty, as white as the snow that covers the mountain peaks.</p>
-<p>They promised each other eternal love. Popocatépetl swore that he would return victorious from war to take her as his wife. With that promise in his heart, he went to battle, carrying the image of his beloved with him.</p>
-<p>But while he was away, an envious enemy brought a lie to the palace, saying that Popocatépetl had died in combat. Upon hearing this news, Iztaccíhuatl fell into deep sorrow. Her heart could not bear the pain, and little by little her life faded away, leaving her still, as if in an eternal sleep.</p>
-<p>When Popocatépetl returned victorious and found his beloved lifeless, his grief was overwhelming. He lifted her body and carried it to the high mountains. There, he laid her down gently, as if she might still awaken, and remained by her side holding a burning torch, watching over her without rest.</p>
-<p>The gods, moved by such faithful love, transformed them into mountains. Iztaccíhuatl became the sleeping mountain, serene and white. Popocatépetl became the volcano that still smokes, the eternal guardian of his beloved.</p>
-<p>Even today, when the volcano releases smoke into the sky, it is said that Popocatépetl continues to watch over Iztaccíhuatl's sleep.</p>
-</div>
-<div class="lang-content" data-lang="pt">
-<p>Nos tempos antigos, quando as montanhas ainda tinham coração e memória, vivia um jovem guerreiro chamado Popocatépetl, forte no corpo e firme no espírito. Ele amava profundamente Iztaccíhuatl, uma princesa de beleza serena, tão branca quanto a neve que cobre os picos das montanhas.</p>
-<p>Eles prometeram amor eterno um ao outro. Popocatépetl jurou que retornaria vitorioso da guerra para tomá-la como esposa. Com essa promessa em seu coração, partiu para a batalha, levando consigo a imagem de sua amada.</p>
-<p>Mas enquanto ele lutava, um inimigo invejoso levou uma mentira ao palácio, dizendo que Popocatépetl havia morrido em combate. Ao ouvir a notícia, Iztaccíhuatl caiu em profunda tristeza. Seu coração não resistiu à dor e, pouco a pouco, sua vida se apagou, ficando imóvel como em um sono eterno.</p>
-<p>Quando Popocatépetl retornou vitorioso e encontrou sua amada sem vida, a dor foi imensa. Ele tomou seu corpo e o levou até o alto das montanhas. Ali a deitou com cuidado, como se ainda pudesse despertar, e permaneceu ao seu lado com uma tocha acesa, velando-a sem descanso.</p>
-<p>Os deuses, comovidos por um amor tão fiel, transformaram os dois em montanhas. Iztaccíhuatl tornou-se a montanha adormecida, serena e branca. Popocatépetl tornou-se o vulcão que ainda solta fumaça, guardião eterno de sua amada.</p>
-<p>Até hoje, quando o vulcão libera fumaça para o céu, diz-se que Popocatépetl continua velando o sono de Iztaccíhuatl.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- POPOCATEPETL -->
+  <div class="page" id="page-popo">
+    <h2>Popocatépetl e Iztaccíhuatl</h2>
+    <div class="subtitle">Leyendas del Fuego y la Transformación</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Popocate1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Popocate2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/Popocate3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/popocate4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('popo-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('popo-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('popo-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('popo-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('popo-c','fr')">Français</button>
+    </div>
+    <div id="popo-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Achtoh, ihcuac in mexicah amo san tepetl quittayaqueh, zan quemeh yolmeh, nemiya ce telpuchtli tlen itoca Popocatépetl, tlacatl chicahuac ihuan yolchicahuac. Yehuatl quicnelia ce cihuapilli cualli ihuan yancuic yolotl, itoca Iztaccíhuatl, tlen cualli ixtli quemeh sitlalli.</p>
+        <p>In omeh tlazohcamatiyah ica nochi inyollo. Popocatépetl quicuaquilia in cihuapilli: "Nimitztlazohtla, ihuan nimitzcuiz ihcuac nimocuepa ica chicahualiztli." Zan quipia ic yauh tlahuizcalpan, campa mochihua in yaoyotl.</p>
+        <p>Pero in tlahtolli amo cualli hualla. Ce tlacatl amo cualli quinilhui Iztaccíhuatl ca Popocatépetl omic ipan yaoyotl. In cihuapilli, ihuan yolotl tlahuelcahua, moteca ipan tlalli ihuan amo occepa motlanextia.</p>
+        <p>Ihcuac Popocatépetl mocuepa, amo quitta in tlazohcamatiyotl nemi. Quitta Iztaccíhuatl moteca quemeh temictli. Ihuan quicui ipan itzin, quimotlalilia ipan ce huey tepetl. Ompa nemi icniuh, quimitta in cihuapilli tlaxcalantli quemeh tepetl iztac.</p>
+        <p>Popocatépetl quimocahua icniuh ihuan quimocuitlahuia ica tletl ihuan popoca. Desde ihcuac, Popocatépetl amo cahua tletl, ca quipiya in tlazohcamatiyotl ipan iyollo. Iztaccíhuatl, iztac tepetl, moteca quemeh cihuapilli cochitzin.</p>
+        <p>In tepetl tlen tlacameh quittah axcan, zan amo tepetl: yehuan omeh yolmeh tlen tlazohcamatiyah.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>En los tiempos antiguos, cuando las montañas aún tenían corazón y memoria, vivía un joven guerrero llamado Popocatépetl, fuerte en el cuerpo y firme en el espíritu. Él amaba profundamente a Iztaccíhuatl, una princesa de belleza serena, tan blanca como la nieve que cubre las cumbres.</p>
+        <p>Ambos se prometieron amor eterno. Popocatépetl juró regresar victorioso de la guerra para tomarla como esposa. Con ese juramento partió al combate, llevando en el corazón la imagen de su amada.</p>
+        <p>Pero mientras él luchaba, un enemigo envidioso llevó una mentira al palacio: dijo que Popocatépetl había muerto. Al escuchar la noticia, Iztaccíhuatl cayó en una profunda tristeza. Su corazón no resistió el dolor y poco a poco se apagó, quedando inmóvil como en un sueño eterno.</p>
+        <p>Cuando Popocatépetl regresó triunfante y encontró a su amada sin vida, el dolor fue tan grande que tomó su cuerpo y lo llevó hasta lo alto de las montañas. Allí la recostó con cuidado, como si aún pudiera despertar, y permaneció a su lado con una antorcha encendida, velándola sin descanso.</p>
+        <p>Los dioses, conmovidos por aquel amor tan fiel, los transformaron en montañas. Iztaccíhuatl se convirtió en la montaña dormida, serena y blanca. Popocatépetl se convirtió en el volcán que aún humea, guardián eterno de su amada.</p>
+        <p>Desde entonces, cuando el volcán lanza humo al cielo, se dice que Popocatépetl sigue velando el sueño de Iztaccíhuatl.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>In ancient times, when mountains still had hearts and memory, there lived a young warrior named Popocatépetl, strong in body and firm in spirit. He deeply loved Iztaccíhuatl, a princess of calm beauty, as white as the snow that covers the mountain peaks.</p>
+        <p>They promised each other eternal love. Popocatépetl swore that he would return victorious from war to take her as his wife. With that promise in his heart, he went to battle, carrying the image of his beloved with him.</p>
+        <p>But while he was away, an envious enemy brought a lie to the palace, saying that Popocatépetl had died in combat. Upon hearing this news, Iztaccíhuatl fell into deep sorrow. Her heart could not bear the pain, and little by little her life faded away, leaving her still, as if in an eternal sleep.</p>
+        <p>When Popocatépetl returned victorious and found his beloved lifeless, his grief was overwhelming. He lifted her body and carried it to the high mountains. There, he laid her down gently, as if she might still awaken, and remained by her side holding a burning torch, watching over her without rest.</p>
+        <p>The gods, moved by such faithful love, transformed them into mountains. Iztaccíhuatl became the sleeping mountain, serene and white. Popocatépetl became the volcano that still smokes, the eternal guardian of his beloved.</p>
+        <p>Even today, when the volcano releases smoke into the sky, it is said that Popocatépetl continues to watch over Iztaccíhuatl's sleep.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Nos tempos antigos, quando as montanhas ainda tinham coração e memória, vivia um jovem guerreiro chamado Popocatépetl, forte no corpo e firme no espírito. Ele amava profundamente Iztaccíhuatl, uma princesa de beleza serena, tão branca quanto a neve que cobre os picos das montanhas.</p>
+        <p>Eles prometeram amor eterno um ao outro. Popocatépetl jurou que retornaria vitorioso da guerra para tomá-la como esposa. Com essa promessa em seu coração, partiu para a batalha, levando consigo a imagem de sua amada.</p>
+        <p>Mas enquanto ele lutava, um inimigo invejoso levou uma mentira ao palácio, dizendo que Popocatépetl havia morrido em combate. Ao ouvir a notícia, Iztaccíhuatl caiu em profunda tristeza. Seu coração não resistiu à dor e, pouco a pouco, sua vida se apagou, ficando imóvel como em um sono eterno.</p>
+        <p>Quando Popocatépetl retornou vitorioso e encontrou sua amada sem vida, a dor foi imensa. Ele tomou seu corpo e o levou até o alto das montanhas. Ali a deitou com cuidado, como se ainda pudesse despertar, e permaneceu ao seu lado com uma tocha acesa, velando-a sem descanso.</p>
+        <p>Os deuses, comovidos por um amor tão fiel, transformaram os dois em montanhas. Iztaccíhuatl tornou-se a montanha adormecida, serena e branca. Popocatépetl tornou-se o vulcão que ainda solta fumaça, guardião eterno de sua amada.</p>
+        <p>Até hoje, quando o vulcão libera fumaça para o céu, diz-se que Popocatépetl continua velando o sono de Iztaccíhuatl.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Dans les temps anciens, quand les montagnes avaient encore un cœur et une mémoire, vivait un jeune guerrier nommé Popocatépetl, fort de corps et ferme d'esprit. Il aimait profondément Iztaccíhuatl, une princesse d'une beauté sereine, aussi blanche que la neige qui couvre les sommets.</p>
+        <p>Ils se promirent un amour éternel. Popocatépetl jura de revenir victorieux de la guerre pour en faire son épouse. Avec cette promesse au cœur, il partit au combat, portant l'image de sa bien-aimée.</p>
+        <p>Mais pendant qu'il combattait, un ennemi envieux apporta un mensonge au palais : il dit que Popocatépetl était mort. En apprenant la nouvelle, Iztaccíhuatl sombra dans une profonde tristesse. Son cœur ne put supporter la douleur et, peu à peu, sa vie s'éteignit, la laissant immobile comme dans un sommeil éternel.</p>
+        <p>Quand Popocatépetl revint victorieux et trouva sa bien-aimée sans vie, la douleur fut immense. Il prit son corps et le porta jusqu'au sommet des montagnes. Là, il la coucha avec soin, comme si elle pouvait encore se réveiller, et resta à ses côtés avec une torche allumée, veillant sur elle sans repos.</p>
+        <p>Les dieux, émus par un amour si fidèle, les transformèrent en montagnes. Iztaccíhuatl devint la montagne endormie, sereine et blanche. Popocatépetl devint le volcan qui fume encore, gardien éternel de sa bien-aimée.</p>
+        <p>Depuis lors, quand le volcan lance de la fumée vers le ciel, on dit que Popocatépetl continue de veiller sur le sommeil d'Iztaccíhuatl.</p>
+      </div>
+    </div>
+  </div>
 
-<section class="catalog" id="catalogo">
-<div class="catalog-inner">
-<div class="catalog-header">
-<h2>Catálogo</h2>
-<p>Títulos publicados por Libros FerX.</p>
-</div>
-<article class="book-card">
-<img src="https://1234567899ferty.github.io/imagenesferx/vocesdelatierra.jpeg" alt="Voces de la Tierra">
-<div class="card-content">
-<h3>Voces de la Tierra</h3>
-<p>Leyendas de las épocas indígenas de México en cuatro idiomas.</p>
-<a href="#libro" class="card-button">Ver información →</a>
-</div>
-</article>
-</div>
-</section>
-</main>
+  <!-- CINCO SOLES -->
+  <div class="page" id="page-soles">
+    <h2>Los Cinco Soles</h2>
+    <div class="subtitle">Leyendas del Fuego y la Transformación</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/ELQUINTOSOL1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/ELQUINTOSOL2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/ELQUINTOSOL3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/ELQUINTOSOL4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('soles-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('soles-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('soles-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('soles-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('soles-c','fr')">Français</button>
+    </div>
+    <div id="soles-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Achtoh amo ce tonatiuh nemiya, zan miactin. In tlalticpac amo ceppa mochihua; mochihua ceceppa ihuan mopoloa ceceppa. In teteoh quinilhuiah Macuilli Tonatiuh, in macuilli nemiliztli.</p>
+        <p>Nahui Ocelotl, in achto tonatiuh, campa nemiya in tlacameh huehuehca. Pero in ocelomeh huallaqueh ihuan quicuaqueh in tlacameh.</p>
+        <p>Nahui Ehecatl, in ome tonatiuh, campa ehecatl tlahuelchihua ihuan quipoloa in tlalticpac. In tlacameh mopatlaqueh quemeh ozomatli.</p>
+        <p>Nahui Quiahuitl, in eyi tonatiuh, campa tletl quiahuitl hualla. In tlacameh motlacuepaqueh quemeh totomeh.</p>
+        <p>Nahui Atl, in nahui tonatiuh, campa atl quipoloa nochi. In tlacameh mopatlaqueh quemeh michimeh.</p>
+        <p>Axcan nemi Nahui Ollin, in macuili tonatiuh. In tonatiuh quinequi tlamantli: yolcayotl ihuan tlatemictli. Pero quimatiyah: ce tonalli, Nahui Ollin no mopolos.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Antes del mundo actual, la Tierra no fue como la conocemos hoy. Según los antiguos pueblos, el mundo ha sido creado y destruido varias veces. Cada una de esas eras fue llamada un Sol.</p>
+        <p>El Primer Sol, llamado Sol Jaguar, fue habitado por gigantes. Pero estos no respetaron a los dioses, y enormes jaguares descendieron del cielo y los devoraron.</p>
+        <p>El Segundo Sol, el Sol del Viento, terminó cuando poderosos huracanes arrasaron la Tierra. Los hombres fueron transformados en monos para sobrevivir entre los árboles.</p>
+        <p>El Tercer Sol, el Sol de Fuego, fue destruido por una lluvia de fuego que cayó del cielo. Los hombres se convirtieron en aves para escapar de las llamas.</p>
+        <p>El Cuarto Sol, el Sol del Agua, terminó con grandes inundaciones que cubrieron toda la Tierra. Los hombres se transformaron en peces.</p>
+        <p>El Quinto Sol, el Sol del Movimiento, es el mundo en el que vivimos hoy. Este Sol se mueve gracias al sacrificio y al equilibrio entre los dioses y los humanos. Pero los sabios advertían que también este Sol terminará algún día, con grandes terremotos. Por eso, los antiguos enseñaban que los seres humanos deben vivir con respeto, pues el equilibrio del mundo depende de ello.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>Before the present world existed, the Earth was not as we know it today. According to ancient traditions, the world has been created and destroyed several times. Each of these eras was called a Sun.</p>
+        <p>The First Sun, known as the Sun of the Jaguar, was inhabited by giants. However, they failed to respect the gods, and enormous jaguars descended from the sky and devoured them.</p>
+        <p>The Second Sun, the Sun of the Wind, ended when powerful hurricanes swept across the Earth. Humans were transformed into monkeys so they could survive among the trees.</p>
+        <p>The Third Sun, the Sun of Fire, was destroyed by a rain of fire that fell from the sky. Humans became birds to escape the flames.</p>
+        <p>The Fourth Sun, the Sun of Water, ended with great floods that covered the entire Earth. Humans were transformed into fish.</p>
+        <p>The Fifth Sun, the Sun of Movement, is the world in which we live today. This Sun moves thanks to sacrifice and balance between gods and humans. But the wise warned that this Sun will also end one day, through great earthquakes. For this reason, the ancient peoples taught that humans must live with respect, for the balance of the world depends on it.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Antes do mundo atual existir, a Terra não era como a conhecemos hoje. Segundo as antigas tradições, o mundo foi criado e destruído várias vezes. Cada uma dessas eras foi chamada de um Sol.</p>
+        <p>O Primeiro Sol, conhecido como o Sol do Jaguar, era habitado por gigantes. Porém, eles não respeitaram os deuses, e enormes jaguares desceram do céu e os devoraram.</p>
+        <p>O Segundo Sol, o Sol do Vento, terminou quando poderosos furacões varreram a Terra. Os humanos foram transformados em macacos para sobreviver entre as árvores.</p>
+        <p>O Terceiro Sol, o Sol do Fogo, foi destruído por uma chuva de fogo que caiu do céu. Os humanos se transformaram em aves para escapar das chamas.</p>
+        <p>O Quarto Sol, o Sol da Água, terminou com grandes inundações que cobriram toda a Terra. Os humanos se transformaram em peixes.</p>
+        <p>O Quinto Sol, o Sol do Movimento, é o mundo em que vivemos hoje. Esse Sol se move graças ao sacrifício e ao equilíbrio entre deuses e humanos. Mas os sábios advertiam que também este Sol terminará um dia, com grandes terremotos. Por isso, os povos antigos ensinavam que os seres humanos devem viver com respeito, pois o equilíbrio do mundo depende disso.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Avant que le monde actuel n'existe, la Terre n'était pas comme nous la connaissons aujourd'hui. Selon les traditions anciennes, le monde a été créé et détruit plusieurs fois. Chacune de ces époques fut appelée un Soleil.</p>
+        <p>Le Premier Soleil, appelé Soleil du Jaguar, fut habité par des géants. Cependant, ceux-ci ne respectèrent pas les dieux, et d'énormes jaguars descendirent du ciel et les dévorèrent.</p>
+        <p>Le Deuxième Soleil, le Soleil du Vent, prit fin lorsque de puissants ouragans balayèrent la Terre. Les humains furent transformés en singes pour survivre parmi les arbres.</p>
+        <p>Le Troisième Soleil, le Soleil de Feu, fut détruit par une pluie de feu tombée du ciel. Les humains devinrent des oiseaux pour échapper aux flammes.</p>
+        <p>Le Quatrième Soleil, le Soleil de l'Eau, se termina par de grandes inondations qui couvrirent toute la Terre. Les humains furent transformés en poissons.</p>
+        <p>Le Cinquième Soleil, le Soleil du Mouvement, est le monde dans lequel nous vivons aujourd'hui. Ce Soleil se meut grâce au sacrifice et à l'équilibre entre les dieux et les humains. Mais les sages avertissaient que ce Soleil aussi prendrait fin un jour, par de grands tremblements de terre. C'est pourquoi les anciens peuples enseignaient que les êtres humains doivent vivre dans le respect, car l'équilibre du monde en dépend.</p>
+      </div>
+    </div>
+  </div>
 
-<footer>
-<h2>LIBROS FERX</h2>
-<p>Historias, leyendas y libros que forman parte de nuestro proyecto.</p>
-<p style="margin-top:12px;">© 2026 Libros FerX. Todos los derechos reservados.</p>
-</footer>
+  <!-- VIAJE AL MICTLAN -->
+  <div class="page" id="page-viaje">
+    <h2>El viaje al Mictlán</h2>
+    <div class="subtitle">Leyendas del Mictlán</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/micticlan1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/micticlan2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/micticlan3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/micticlan4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('viaje-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('viaje-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('viaje-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('viaje-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('viaje-c','fr')">Français</button>
+    </div>
+    <div id="viaje-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Quēmah in tlācatl mictōya, amo yāuh īpan ilhuīcatl. Yāuh īpan Mictlān, in cālli in mictēmeh. In ōhtli tlahuel huehca: tepēmeh, atl chicāhuac, ehecatl auh chīmalli. In yōllotl monequi chicāhuac. Ipan Mictlān quimotta Mictlāntēcuhtli auh Mictecacīhuātl. Auh in yōllotl mocāuh īpan nemiliztli yancuīc.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Cuando una persona moría, no iba al cielo. Su espíritu emprendía un largo viaje hacia el Mictlán, el lugar de los muertos. El camino era difícil: montañas que chocaban, ríos profundos, vientos fuertes y pruebas del alma. Solo con fortaleza y paciencia se podía avanzar. Al final del recorrido, el espíritu llegaba ante Mictlantecuhtli y Mictecacíhuatl. Ahí encontraba descanso y comenzaba una nueva forma de existencia.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>When a person died, they did not go to heaven. Their spirit began a long journey to Mictlan, the land of the dead. The path was difficult: colliding mountains, deep rivers, strong winds, and trials of the soul. Only strength and patience allowed the spirit to continue. At the end of the journey, the spirit reached Mictlantecuhtli and Mictecacihuatl, where rest was found and a new form of existence began.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Quando uma pessoa morria, não ia para o céu. Seu espírito iniciava uma longa viagem até Mictlan, o lugar dos mortos. O caminho era difícil: montanhas que se chocavam, rios profundos, ventos fortes e provas da alma. Somente com força e paciência era possível seguir. Ao final da jornada, o espírito chegava diante de Mictlantecuhtli e Mictecacíhuatl, onde encontrava descanso e uma nova forma de existência.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Quand une personne mourait, elle n'allait pas au ciel. Son esprit entreprenait un long voyage vers le Mictlán, le lieu des morts. Le chemin était difficile : des montagnes qui s'entrechoquaient, des rivières profondes, des vents forts et des épreuves de l'âme. Seules la force et la patience permettaient d'avancer. À la fin du parcours, l'esprit arrivait devant Mictlantecuhtli et Mictecacíhuatl. Là, il trouvait le repos et commençait une nouvelle forme d'existence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MICTLANTECUHTLI Y MICTECACIHUATL -->
+  <div class="page" id="page-mictlante">
+    <h2>Mictlantecuhtli y Mictecacíhuatl</h2>
+    <div class="subtitle">Leyendas del Mictlán</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/MictlantecuhtliyMictecac%C3%ADhuatl1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/MictlantecuhtliyMictecac%C3%ADhuatl2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/MictlantecuhtliyMictecac%C3%ADhuatl3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/MictlantecuhtliyMictecac%C3%ADhuatl4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('mictlante-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('mictlante-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('mictlante-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('mictlante-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('mictlante-c','fr')">Français</button>
+    </div>
+    <div id="mictlante-c">
+      <div class="lang-content" data-lang="nah">
+        <p>Mictlāntecuhtli auh Mictecacīhuātl in tēcōlhuān īpan Mictlān. Quimocuitlāhuia in ānimah in quipānoa in chicnāuh tlālli. Āmo tlatzacuiltiliztli, zan nēnquiā, zan tlamicā. In mictiliztli āmo in tlācatl tlatlāz, zan quimaca in yoliliztli occeppa.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>Mictlantecuhtli y Mictecacíhuatl eran los señores del Mictlán. Cuidaban a las almas que cruzaban los nueve niveles. No castigaban: guiaban el descanso. La muerte no era un final, sino otro comienzo.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>Mictlantecuhtli and Mictecacihuatl were the lords of Mictlan. They watched over the souls who crossed the nine levels. They did not punish — they guided rest. Death was not an ending, but another beginning.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>Mictlantecuhtli e Mictecacíhuatl eram os senhores de Mictlán. Cuidavam das almas que atravessavam os nove níveis. Não puniam: guiavam o descanso. A morte não era o fim, mas outro começo.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Mictlantecuhtli et Mictecacíhuatl étaient les seigneurs du Mictlán. Ils veillaient sur les âmes qui traversaient les neuf niveaux. Ils ne punissaient pas : ils guidaient le repos. La mort n'était pas une fin, mais un autre commencement.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLIBRI DEL GUERRERO -->
+  <div class="page" id="page-colibri">
+    <h2>El colibrí del guerrero</h2>
+    <div class="subtitle">Leyendas de los Animales Sagrados</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/colibri1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/colibri2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/colibri3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/colibri4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('colibri-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('colibri-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('colibri-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('colibri-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('colibri-c','fr')">Français</button>
+    </div>
+    <div id="colibri-c">
+      <div class="lang-content" data-lang="nah">
+        <p>In yaōtl quimictiaya īpan cuīcatl auh yaōyōtl. Quēmah mictōya, in yōllotl amo mopoloa. Tlācatl yaōtl mocuēpa īpan huitzilin, pitzāhuac auh cencā chicāhuac. In huitzilin patlāni īpan xōchitl auh tonatiuh. Quicui in yōllotl in yaōtl, auh quimōtlalia īpan nemiliztli yancuīc.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>El guerrero entregaba su vida en la batalla y en el canto sagrado. Cuando moría, su espíritu no desaparecía. El alma del guerrero regresaba como colibrí, pequeño en cuerpo, pero fuerte en esencia. El colibrí volaba entre las flores y hacia el sol. Llevaba el corazón del guerrero y lo transformaba en nueva vida.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>The warrior gave his life in battle and sacred song. When he died, his spirit did not vanish. The warrior's soul returned as a hummingbird, small in body, yet strong in essence. The hummingbird flew among flowers and toward the sun, carrying the warrior's heart and transforming it into new life.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>O guerreiro entregava sua vida na batalha e no canto sagrado. Quando morria, seu espírito não desaparecia. A alma do guerreiro voltava como um beija-flor, pequeno no corpo, mas forte na essência. O beija-flor voava entre as flores e em direção ao sol, levando o coração do guerreiro e transformando-o em nova vida.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Le guerrier offrait sa vie dans la bataille et dans le chant sacré. Quand il mourait, son esprit ne disparaissait pas. L'âme du guerrier revenait sous la forme d'un colibri, petit de corps, mais fort d'essence. Le colibri volait parmi les fleurs et vers le soleil. Il portait le cœur du guerrier et le transformait en nouvelle vie.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAHUAL -->
+  <div class="page" id="page-nahual">
+    <h2>El nahual</h2>
+    <div class="subtitle">Leyendas de los Animales Sagrados</div>
+    <div class="gallery">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahual1.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahual2.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahual3.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahual4.jpeg" alt="">
+    </div>
+    <div class="lang-tabs">
+      <button data-lang="nah" onclick="showLang('nahual-c','nah')">Náhuatl</button>
+      <button data-lang="es" class="active" onclick="showLang('nahual-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('nahual-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('nahual-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('nahual-c','fr')">Français</button>
+    </div>
+    <div id="nahual-c">
+      <div class="lang-content" data-lang="nah">
+        <p>In nāhualli in tlācatl in quipia yolotl occeppa. Quipānoa in yohualli, quimopatlā in itzcuīntli, occeppa in cuāuhtli, occeppa in ocēlōtl. In nāhualli āmo tlahtōltiā, zan tlachīa auh tlapālehuia.</p>
+        <p>In nāhualli in tlatlamantli īpan tlācatl in quipia ce yolotl īpan tlālli. In yolotl nāhualli quimotēquipanoa in tlālli auh in yoliliztli. Āmo tēcuītlāz, zan quimocuitlāhuia. In tlācatl auh in tlālli zan ce.</p>
+      </div>
+      <div class="lang-content active" data-lang="es">
+        <p>El nahual era una persona con un espíritu doble. Caminaba en la noche y podía transformarse en perro, ave o jaguar. El nahual no hablaba mucho: observaba y protegía.</p>
+        <p>El nahual es una figura de las culturas indígenas de México. Representa la creencia de que algunas personas nacen con un vínculo espiritual con un animal de la naturaleza. Este vínculo simboliza respeto, protección y equilibrio entre el ser humano y la tierra.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>The nahual was a person with a second spirit. They walked at night and could transform into a dog, a bird, or a jaguar. The nahual spoke little: they watched and protected.</p>
+        <p>The nahual is a figure from Indigenous cultures of Mexico. It represents the belief that some people are born with a spiritual bond to an animal from nature. This bond symbolizes respect, protection, and balance between humans and the earth.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>O nahual era uma pessoa com um espírito duplo. Caminhava à noite e podia se transformar em cachorro, ave ou jaguar. O nahual falava pouco: observava e protegia.</p>
+        <p>O nahual é uma figura das culturas indígenas do México. Representa a crença de que algumas pessoas nascem com um vínculo espiritual com um animal da natureza. Esse vínculo simboliza respeito, proteção e equilíbrio entre o ser humano e a terra.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Le nahual était une personne à l'esprit double. Il marchait la nuit et pouvait se transformer en chien, en oiseau ou en jaguar. Le nahual parlait peu : il observait et protégeait.</p>
+        <p>Le nahual est une figure des cultures indigènes du Mexique. Il représente la croyance selon laquelle certaines personnes naissent avec un lien spirituel avec un animal de la nature. Ce lien symbolise le respect, la protection et l'équilibre entre l'être humain et la terre.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDITOS / CIERRE -->
+  <div class="page" id="page-creditos">
+    <h2>Créditos y cierre</h2>
+    <div class="subtitle">Voces de la Tierra</div>
+    <div class="gallery" style="grid-template-columns:repeat(2,1fr);max-width:500px;margin:0 auto 25px;">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahuatvdt.jpeg" alt="">
+      <img src="https://1234567899ferty.github.io/imagenesferx/nahuat2vdt.jpeg" alt="">
+    </div>
+    <p>Este libro fue creado con respeto a las culturas originarias de México y a su tradición oral. Las leyendas aquí presentadas pertenecen a la memoria colectiva de los pueblos indígenas. Este trabajo busca preservar, difundir y honrar esas voces ancestrales.</p>
+    <div class="logo-row">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Libros FerX">
+        <path d="M8 12C8 9.8 9.8 8 12 8H28C32.4 8 36 11.6 36 16V54C34 51.5 30.8 50 27 50H12C9.8 50 8 48.2 8 46V12Z" stroke="#077A7D" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M56 12C56 9.8 54.2 8 52 8H36C31.6 8 28 11.6 28 16V54C30 51.5 33.2 50 37 50H52C54.2 50 56 48.2 56 46V12Z" stroke="#077A7D" stroke-width="4" stroke-linejoin="round"/>
+      </svg>
+      <img src="https://1234567899ferty.github.io/imagenesferx/ferempresas2.jpeg" alt="Fer Empresas">
+      <img src="https://1234567899ferty.github.io/imagenesferx/mexicologo.jpeg" alt="México">
+    </div>
+    <p style="margin-top:20px;font-size:.85rem;color:#5a4a2f;">© 2026 Libros FerX. Todos los derechos reservados.</p>
+  </div>
+
+</div>
+
+<div class="book-nav">
+  <button id="btn-prev" onclick="prevPage()">←</button>
+  <span id="page-count">Página 1 de 13</span>
+  <button id="btn-next" onclick="nextPage()">→</button>
+</div>
 
 <script>
+var pages = ['page-cover','page-toc','page-intro','page-maiz','page-tonantzin','page-tlaloc','page-popo','page-soles','page-viaje','page-mictlante','page-colibri','page-nahual','page-creditos'];
+var current = 0;
+function updateNav(){
+  document.getElementById('page-count').textContent = 'Página ' + (current+1) + ' de ' + pages.length;
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === pages.length - 1;
+}
+function goTo(index){
+  document.getElementById(pages[current]).classList.remove('active');
+  current = index;
+  document.getElementById(pages[current]).classList.add('active');
+  updateNav();
+}
+function nextPage(){ if(current < pages.length - 1) goTo(current + 1); }
+function prevPage(){ if(current > 0) goTo(current - 1); }
 function showLang(sectionId, lang){
   var wrap = document.getElementById(sectionId);
   var tabs = wrap.previousElementSibling;
@@ -436,6 +627,7 @@ function showLang(sectionId, lang){
     b.classList.toggle('active', b.dataset.lang === lang);
   });
 }
+updateNav();
 </script>
 </body>
 </html>
