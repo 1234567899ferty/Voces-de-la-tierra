@@ -78,7 +78,9 @@ body{font-family:Georgia,'Times New Roman',serif;background:var(--azul);color:va
       <li><a onclick="goTo(9)">Mictlantecuhtli y Mictecacíhuatl</a></li>
       <li><a onclick="goTo(10)">El colibrí del guerrero</a></li>
       <li><a onclick="goTo(11)">El nahual</a></li>
-      <li><a onclick="goTo(12)">Créditos</a></li>
+      <li><a onclick="goTo(12)">Glosario (Sección cultural)</a></li>
+      <li><a onclick="goTo(13)">Fuentes y tradición oral</a></li>
+      <li><a onclick="goTo(14)">Créditos</a></li>
     </ul>
   </div>
 
@@ -573,6 +575,102 @@ body{font-family:Georgia,'Times New Roman',serif;background:var(--azul);color:va
     </div>
   </div>
 
+  <!-- GLOSARIO -->
+  <div class="page" id="page-glosario">
+    <h2>Glosario</h2>
+    <div class="subtitle">Sección cultural</div>
+    <div class="lang-tabs">
+      <button data-lang="es" class="active" onclick="showLang('glosario-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('glosario-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('glosario-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('glosario-c','fr')">Français</button>
+    </div>
+    <div id="glosario-c">
+      <div class="lang-content active" data-lang="es">
+        <p><strong>Tlahtōlli (Relato):</strong> Relato tradicional transmitido de generación en generación.</p>
+        <p><strong>Teōtl (Dios):</strong> Ser sagrado o divino.</p>
+        <p><strong>Yōllotl (Espíritu):</strong> Esencia espiritual del ser.</p>
+        <p><strong>Mictlāmpa (Inframundo):</strong> Mundo de los muertos.</p>
+        <p><strong>Ōhtli (Camino):</strong> Ruta o sendero espiritual.</p>
+        <p><strong>Tlatlacōlli (Prueba):</strong> Dificultad que debe superarse.</p>
+        <p><strong>Tlayohualli (Oscuridad):</strong> Ausencia de luz; símbolo de transición.</p>
+        <p><strong>Tlāhuiztli (Luz):</strong> Claridad; símbolo de vida.</p>
+        <p><strong>Cāhuitl (Tiempo):</strong> Flujo continuo del mundo.</p>
+        <p><strong>Tlālticpac nemiliztli (Destino):</strong> Camino que sigue la vida.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p><strong>Tlahtōlli (Story):</strong> Traditional story passed through generations.</p>
+        <p><strong>Teōtl (God):</strong> Sacred or divine being.</p>
+        <p><strong>Yōllotl (Spirit):</strong> Spiritual essence of a being.</p>
+        <p><strong>Mictlāmpa (Underworld):</strong> Land of the dead.</p>
+        <p><strong>Ōhtli (Path):</strong> Path or spiritual route.</p>
+        <p><strong>Tlatlacōlli (Trial):</strong> Trial or challenge.</p>
+        <p><strong>Tlayohualli (Darkness):</strong> Darkness; symbol of transition.</p>
+        <p><strong>Tlāhuiztli (Light):</strong> Light; symbol of life.</p>
+        <p><strong>Cāhuitl (Time):</strong> Flow of time.</p>
+        <p><strong>Tlālticpac nemiliztli (Destiny):</strong> Path of life.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p><strong>Tlahtōlli (Relato):</strong> História tradicional passada de geração em geração.</p>
+        <p><strong>Teōtl (Deus):</strong> Ser sagrado ou divino.</p>
+        <p><strong>Yōllotl (Espírito):</strong> Essência espiritual do ser.</p>
+        <p><strong>Mictlāmpa (Inframundo):</strong> Mundo dos mortos.</p>
+        <p><strong>Ōhtli (Caminho):</strong> Caminho ou rota espiritual.</p>
+        <p><strong>Tlatlacōlli (Prova):</strong> Prova ou desafio.</p>
+        <p><strong>Tlayohualli (Escuridão):</strong> Escuridão; símbolo de transição.</p>
+        <p><strong>Tlāhuiztli (Luz):</strong> Luz; símbolo de vida.</p>
+        <p><strong>Cāhuitl (Tempo):</strong> Fluxo do tempo.</p>
+        <p><strong>Tlālticpac nemiliztli (Destino):</strong> Caminho da vida.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p><strong>Tlahtōlli (Récit):</strong> Récit traditionnel transmis de génération en génération.</p>
+        <p><strong>Teōtl (Dieu):</strong> Être sacré ou divin.</p>
+        <p><strong>Yōllotl (Esprit):</strong> Essence spirituelle de l'être.</p>
+        <p><strong>Mictlāmpa (Monde souterrain):</strong> Monde des morts.</p>
+        <p><strong>Ōhtli (Chemin):</strong> Chemin ou route spirituelle.</p>
+        <p><strong>Tlatlacōlli (Épreuve):</strong> Épreuve ou défi à surmonter.</p>
+        <p><strong>Tlayohualli (Obscurité):</strong> Absence de lumière ; symbole de transition.</p>
+        <p><strong>Tlāhuiztli (Lumière):</strong> Clarté ; symbole de vie.</p>
+        <p><strong>Cāhuitl (Temps):</strong> Flux continu du temps.</p>
+        <p><strong>Tlālticpac nemiliztli (Destin):</strong> Chemin que suit la vie.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUENTES Y TRADICION ORAL -->
+  <div class="page" id="page-fuentes">
+    <h2>Fuentes y tradición oral</h2>
+    <div class="subtitle">Voces de la Tierra</div>
+    <div class="lang-tabs">
+      <button data-lang="es" class="active" onclick="showLang('fuentes-c','es')">Español</button>
+      <button data-lang="en" onclick="showLang('fuentes-c','en')">English</button>
+      <button data-lang="pt" onclick="showLang('fuentes-c','pt')">Português</button>
+      <button data-lang="fr" onclick="showLang('fuentes-c','fr')">Français</button>
+    </div>
+    <div id="fuentes-c">
+      <div class="lang-content active" data-lang="es">
+        <p>Las leyendas presentadas en este libro provienen de la tradición oral de los pueblos indígenas de México, transmitidas de generación en generación.</p>
+        <p>Estas historias no nacieron en libros, sino en la palabra hablada, en la memoria colectiva y en la relación profunda con la naturaleza y la comunidad.</p>
+        <p>Las traducciones buscan respetar el sentido cultural y simbólico de cada relato, manteniendo su espíritu original.</p>
+      </div>
+      <div class="lang-content" data-lang="en">
+        <p>The legends in this book come from the oral traditions of Indigenous peoples of Mexico, passed down from generation to generation.</p>
+        <p>These stories were not born in books, but in spoken word, collective memory, and a deep connection with nature and community.</p>
+        <p>The translations aim to respect the cultural and symbolic meaning of each story, preserving their original spirit.</p>
+      </div>
+      <div class="lang-content" data-lang="pt">
+        <p>As lendas apresentadas neste livro vêm da tradição oral dos povos indígenas do México, transmitidas de geração em geração.</p>
+        <p>Essas histórias não nasceram em livros, mas na palavra falada, na memória coletiva e na relação profunda com a natureza e a comunidade.</p>
+        <p>As traduções buscam respeitar o sentido cultural e simbólico de cada relato, preservando seu espírito original.</p>
+      </div>
+      <div class="lang-content" data-lang="fr">
+        <p>Les légendes présentées dans ce livre proviennent de la tradition orale des peuples indigènes du Mexique, transmises de génération en génération.</p>
+        <p>Ces histoires ne sont pas nées dans les livres, mais dans la parole, la mémoire collective et la relation profonde avec la nature et la communauté.</p>
+        <p>Les traductions cherchent à respecter le sens culturel et symbolique de chaque récit, en préservant son esprit original.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- CREDITOS / CIERRE -->
   <div class="page" id="page-creditos">
     <h2>Créditos y cierre</h2>
@@ -597,12 +695,12 @@ body{font-family:Georgia,'Times New Roman',serif;background:var(--azul);color:va
 
 <div class="book-nav">
   <button id="btn-prev" onclick="prevPage()">←</button>
-  <span id="page-count">Página 1 de 13</span>
+  <span id="page-count">Página 1 de 15</span>
   <button id="btn-next" onclick="nextPage()">→</button>
 </div>
 
 <script>
-var pages = ['page-cover','page-toc','page-intro','page-maiz','page-tonantzin','page-tlaloc','page-popo','page-soles','page-viaje','page-mictlante','page-colibri','page-nahual','page-creditos'];
+var pages = ['page-cover','page-toc','page-intro','page-maiz','page-tonantzin','page-tlaloc','page-popo','page-soles','page-viaje','page-mictlante','page-colibri','page-nahual','page-glosario','page-fuentes','page-creditos'];
 var current = 0;
 function updateNav(){
   document.getElementById('page-count').textContent = 'Página ' + (current+1) + ' de ' + pages.length;
